@@ -59,20 +59,27 @@ I could run an AMD64 image via emulation as stated here:
 
 Let's check for a Ruby image first. Et voilà: [Ruby Docker official image](https://hub.docker.com/_/ruby) 
 that is offically curated and supports various architectures including ARMv8 64-bit. Seems to be the way to go. 
-Let's setup the Docker file for Ruby using the documentated docker setup example for Ruby as our reference.  
+Let's setup the Docker file for Ruby using the documentated docker setup example for Ruby as our reference. The dockerfile needs to be stored in a folder where the necessary Gem-files are also located.
 
 >```shell
->FROM ruby:3.3
+>FROM ruby:3.3.0
+>
+>RUN apt-get update && apt-get install -y build-essential openssl bundler
 >
 ># throw errors if Gemfile has been modified since Gemfile.lock
->RUN bundle config --global frozen 1
+>RUN bundle config --global frozen true
 >
->WORKDIR /usr/src/app
+>RUN mkdir -p /spdm
+>WORKDIR /spdm
 >
->COPY ./ ./
+>COPY Gemfile Gemfile.lock ./
 >RUN bundle install
->#RUN bundle exec jekyll serve
->CMD ["bundle", "exec", "jekyll", "serve", "--livereload", "--host", "0.0.0.0"]
+>COPY . ./
+>
+>EXPOSE 4000
+>
+>ENTRYPOINT ["bundle", "exec"]
+>CMD jekyll serve --host 0.0.0.0 --livereload
 >```
 
 It is important here to copy both <span style="background-color: lightgrey">Gemfile</span> 
