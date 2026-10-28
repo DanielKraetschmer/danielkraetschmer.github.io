@@ -57,15 +57,13 @@ Knowledge graphs play a pivotal role in enhancing **tracability**, **lineage and
 Despite its importance, documentation is often the first casualty in **real-world engineering** — just like metadata, which is frequently missing or incorrect. These errors are directly transferred into knowledge graphs, where they are amplified through data connections, ultimately leading to incorrect results in downstream applications. Simply put: the quality of your connected data sources is **mission-critical for success** in any data-driven business. So take care! 
 
 
-
-<!---
 A simulation run in structural mechanics requires several key inputs:
 
 - Geometry Information: The structure's shape is discretized into a finite element mesh, consisting of nodes and elements.
 - Material Properties: Defined based on the physical domain and type of simulation, including parameters like elasticity, plasticity, and thermal properties.
 - Boundary Conditions: Constraints such as fixed supports, symmetry conditions, or prescribed displacements.
 - Load Data: Applied forces, pressures, thermal loads, or other external influences affecting the structure.
-
+<!---
 ![Data is the new oil](/images/2025-02-26_Simulation_Contour_plot.png)
 <small> Source: Daniel Krätschmer, [http://dx.doi.org/10.18419/opus-1923](http://dx.doi.org/10.18419/opus-1923)</small>
 
