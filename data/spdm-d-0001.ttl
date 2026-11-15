@@ -1,0 +1,234 @@
+@prefix sd: <https://www.spdm-tech.de/ontology/drawing#> .
+@prefix : <https://www.spdm-tech.de/data/spdm-d-0001#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:drawing a sd:Drawing ;
+    rdfs:label "Drawing SPDM-D-0001"@en ;
+    rdfs:comment "Revision: A"@en ;
+    rdfs:comment "Sheet: A3, first-angle projection"@en ;
+    rdfs:comment "Views: main and end view 2:1, section A-A 1:1, detail C 4:1"@en ;
+    sd:describes :part .
+:model a sd:CADModel ;
+    rdfs:label "CAD model"@en ;
+    rdfs:comment "Script: spdm_demo_spool.py"@en ;
+    rdfs:comment "Formats: FCStd, STEP, STL"@en ;
+    sd:represents :part ;
+    sd:derivedFrom :drawing .
+:part a sd:Part ;
+    rdfs:label "Spool, six-hole flanges"@en ;
+    rdfs:comment "Overall length: 80 mm"@en ;
+    rdfs:comment "Volume: 20.74 cm³"@en ;
+    rdfs:comment "Mass: 164 g"@en ;
+    sd:madeOf :material ;
+    sd:subjectTo :iso2768 ;
+    sd:subjectTo :ra ;
+    sd:subjectTo :edges ;
+    sd:hasFeature :seats ;
+    sd:hasFeature :flanges ;
+    sd:hasFeature :flanks ;
+    sd:hasFeature :hub ;
+    sd:hasFeature :spigot ;
+    sd:hasFeature :undercut ;
+    sd:hasFeature :holes ;
+    sd:hasFeature :thread ;
+    sd:hasFeature :bore .
+:material a sd:Material ;
+    rdfs:label "X8CrNiS18-9 (1.4305)"@en ;
+    rdfs:comment "Designation: X8CrNiS18-9"@en ;
+    rdfs:comment "Type: austenitic stainless steel, free-machining"@en ;
+    rdfs:comment "Density: 7.9 g/cm³"@en ;
+    rdfs:comment "Young's modulus (analyses): 200 GPa"@en ;
+    rdfs:comment "Poisson's ratio (analyses): 0.3"@en ;
+    rdfs:comment "Yield strength: not given"@en .
+:iso2768 a sd:Standard ;
+    rdfs:label "ISO 2768-mK"@en ;
+    rdfs:comment "Covers: general tolerances: linear and angular (m), geometrical (K)"@en .
+:ra a sd:Requirement ;
+    rdfs:label "Surface roughness Ra 3.2"@en ;
+    rdfs:comment "Applies to: all surfaces unless stated"@en ;
+    rdfs:comment "Unit: µm"@en .
+:edges a sd:Requirement ;
+    rdfs:label "Break sharp edges 0.1 to 0.3 mm"@en ;
+    sd:value "0.1 to 0.3 mm" .
+:iso286 a sd:Standard ;
+    rdfs:label "ISO 286-2"@en ;
+    rdfs:comment "Covers: fits and tolerance grades, e.g. h7"@en .
+:din509 a sd:Standard ;
+    rdfs:label "DIN 509"@en ;
+    rdfs:comment "Covers: undercuts on turned parts, form E"@en .
+:iso261 a sd:Standard ;
+    rdfs:label "ISO 261"@en ;
+    rdfs:comment "Covers: metric threads, general plan"@en .
+:seats a sd:RotationalFeature ;
+    rdfs:label "Bearing seats ×2"@en ;
+    rdfs:comment "Characteristics: 2"@en ;
+    sd:hasCharacteristic :seats_0 ;
+    sd:hasCharacteristic :seats_1 .
+:seats_0 a sd:Tolerance ;
+    rdfs:label "Ø10 h7"@en ;
+    sd:value "Ø10 mm, fit h7" ;
+    sd:modelParameter "SHAFT_D" ;
+    sd:toleratedBy :iso286 .
+:seats_1 a sd:Dimension ;
+    rdfs:label "8 / 23"@en ;
+    sd:value "8 and 23 mm +0.1" ;
+    sd:modelParameter "LEFT_SHAFT_L, RIGHT_SHAFT_L" .
+:flanges a sd:RotationalFeature ;
+    rdfs:label "Flanges ×2"@en ;
+    rdfs:comment "Characteristics: 2"@en ;
+    sd:hasCharacteristic :flanges_0 ;
+    sd:hasCharacteristic :flanges_1 .
+:flanges_0 a sd:Dimension ;
+    rdfs:label "Ø40"@en ;
+    sd:value "Ø40 mm" ;
+    sd:modelParameter "FLANGE_D" .
+:flanges_1 a sd:Dimension ;
+    rdfs:label "3"@en ;
+    sd:value "thickness 3 mm, chamfer 1×45°" ;
+    sd:modelParameter "FLANGE_T, FLANGE_CHAMFER" .
+:flanks a sd:TransitionFeature ;
+    rdfs:label "Flanks ×2"@en ;
+    rdfs:comment "Characteristics: 1"@en ;
+    sd:hasCharacteristic :flanks_0 .
+:flanks_0 a sd:Dimension ;
+    rdfs:label "R19"@en ;
+    sd:value "R19 mm, centre 21.5 off axis, 21.9 from the flange face" ;
+    sd:modelParameter "FLANK_R, FLANK_CENTRE_R, FLANK_CENTRE_X" .
+:hub a sd:RotationalFeature ;
+    rdfs:label "Hub"@en ;
+    rdfs:comment "Characteristics: 2"@en ;
+    sd:hasCharacteristic :hub_0 ;
+    sd:hasCharacteristic :hub_1 .
+:hub_0 a sd:Dimension ;
+    rdfs:label "Ø16"@en ;
+    sd:value "Ø16 mm" ;
+    sd:modelParameter "HUB_D" .
+:hub_1 a sd:Dimension ;
+    rdfs:label "R3"@en ;
+    sd:value "fillet R3 mm" ;
+    sd:modelParameter "HUB_FILLET" .
+:spigot a sd:RotationalFeature ;
+    rdfs:label "Spigot"@en ;
+    rdfs:comment "Characteristics: 2"@en ;
+    sd:hasCharacteristic :spigot_0 ;
+    sd:hasCharacteristic :spigot_1 .
+:spigot_0 a sd:Dimension ;
+    rdfs:label "Ø8"@en ;
+    sd:value "Ø8 mm" ;
+    sd:modelParameter "SPIGOT_D" .
+:spigot_1 a sd:Dimension ;
+    rdfs:label "7"@en ;
+    sd:value "length 7 mm +0.1" ;
+    sd:modelParameter "SPIGOT_L" .
+:undercut a sd:TransitionFeature ;
+    rdfs:label "Undercut"@en ;
+    rdfs:comment "Characteristics: 1"@en ;
+    sd:hasCharacteristic :undercut_0 ;
+    sd:conformsTo :din509 .
+:undercut_0 a sd:Dimension ;
+    rdfs:label "E 0.4×0.2"@en ;
+    sd:value "form E, R0.4, depth 0.2, width 2 mm, 15°" ;
+    sd:modelParameter "UNDERCUT_R, UNDERCUT_T, UNDERCUT_F, UNDERCUT_ANGLE" .
+:holes a sd:HoleFeature ;
+    rdfs:label "Hole circle 6×"@en ;
+    rdfs:comment "Characteristics: 2"@en ;
+    sd:hasCharacteristic :holes_0 ;
+    sd:hasCharacteristic :holes_1 .
+:holes_0 a sd:Dimension ;
+    rdfs:label "Ø3.4"@en ;
+    sd:value "Ø3.4 mm +0.1, 6 per flange" ;
+    sd:modelParameter "FLANGE_HOLE_D, FLANGE_HOLES" .
+:holes_1 a sd:Dimension ;
+    rdfs:label "PCD Ø30"@en ;
+    sd:value "pitch circle Ø30 mm" ;
+    sd:modelParameter "FLANGE_HOLE_PCD" .
+:thread a sd:HoleFeature ;
+    rdfs:label "Thread M4"@en ;
+    rdfs:comment "Characteristics: 1"@en ;
+    sd:hasCharacteristic :thread_0 ;
+    sd:conformsTo :iso261 .
+:thread_0 a sd:Dimension ;
+    rdfs:label "M4 × 8"@en ;
+    sd:value "thread depth 8, drill Ø3.3 × 12 mm" ;
+    sd:modelParameter "M4_THREAD_DEPTH, M4_DRILL_D, M4_DRILL_DEPTH" .
+:bore a sd:HoleFeature ;
+    rdfs:label "Bore Ø4"@en ;
+    rdfs:comment "Characteristics: 1"@en ;
+    sd:hasCharacteristic :bore_0 .
+:bore_0 a sd:Dimension ;
+    rdfs:label "Ø4 × 12"@en ;
+    sd:value "Ø4 × 12 mm, entry 0.5×45°" ;
+    sd:modelParameter "RIGHT_HOLE_D, RIGHT_HOLE_DEPTH, HOLE_CHAMFER" .
+:an_static a sd:StaticAnalysis ;
+    rdfs:label "Torsion analysis"@en ;
+    rdfs:comment "Solver: CalculiX, 2nd-order tetrahedra"@en ;
+    rdfs:comment "Script: spdm_demo_spool_fem.py"@en ;
+    rdfs:comment "Twist of the spigot end: 0.233°"@en ;
+    sd:analyses :part ;
+    sd:usesModel :model ;
+    sd:usesMaterial :material ;
+    sd:hasSetup :lc_torque ;
+    sd:hasSetup :bc_hub ;
+    sd:hasSetup :mesh_static ;
+    sd:produces :res_stress .
+:an_modal a sd:ModalAnalysis ;
+    rdfs:label "Modal analysis"@en ;
+    rdfs:comment "Solver: CalculiX, 2nd-order tetrahedra"@en ;
+    rdfs:comment "Script: spdm_demo_spool_modal_fem.py"@en ;
+    rdfs:comment "Modes: 9.33, 10.63, 10.64, 13.26, 14.14, 22.46 kHz"@en ;
+    sd:analyses :part ;
+    sd:usesModel :model ;
+    sd:usesMaterial :material ;
+    sd:hasSetup :bc_bearings ;
+    sd:hasSetup :mesh_modal ;
+    sd:produces :res_mode1 .
+:lc_torque a sd:LoadCase ;
+    rdfs:label "8 N·m torque"@en ;
+    rdfs:comment "Load: torque 8 N·m about +X on the spigot end face at x=80 (rigid face); nominal 3.2 N·m scales linearly"@en ;
+    sd:actsOn :spigot .
+:bc_hub a sd:BoundaryCondition ;
+    rdfs:label "Hub fixed"@en ;
+    rdfs:comment "Support: fixed: Ø16 hub surface (x=17.8..47.2)"@en ;
+    sd:holds :hub .
+:bc_bearings a sd:BoundaryCondition ;
+    rdfs:label "Bearing supports"@en ;
+    rdfs:comment "Support: bearing: Ø10 seat x=0..7, Y and Z fixed, X fixed (axial bearing); bearing: Ø10 seat x=58..73, Y and Z fixed"@en ;
+    sd:holds :seats .
+:mesh_static a sd:Mesh ;
+    rdfs:label "Mesh 91,172 nodes"@en ;
+    rdfs:comment "Elements: 54,610"@en ;
+    rdfs:comment "Element size: 2 mm, 0.15 mm at the undercut"@en .
+:mesh_modal a sd:Mesh ;
+    rdfs:label "Mesh 92,293 nodes"@en ;
+    rdfs:comment "Elements: 58,029"@en ;
+    rdfs:comment "Element size: 1.5 mm, 0.5 mm at the fillets"@en .
+:res_stress a sd:StressResult ;
+    rdfs:label "269 MPa"@en ;
+    rdfs:comment "Quantity: von Mises stress, peak"@en ;
+    rdfs:comment "Location: R0.4 undercut at the shaft shoulder"@en ;
+    rdfs:comment "Stress concentration: Kt 1.55"@en ;
+    rdfs:comment "At the nominal 3.2 N·m: 108 MPa"@en ;
+    sd:locatedAt :undercut ;
+    sd:verifiedBy :chk_hand ;
+    sd:verifiedBy :chk_mesh_static .
+:res_mode1 a sd:FrequencyResult ;
+    rdfs:label "9.33 kHz"@en ;
+    rdfs:comment "Quantity: first natural frequency"@en ;
+    rdfs:comment "Mode shape: torsion, flanges twist together"@en ;
+    sd:locatedAt :flanges ;
+    sd:verifiedBy :chk_mesh_modal .
+:chk_hand a sd:Check ;
+    rdfs:label "Hand check +0.3 %"@en ;
+    rdfs:comment "Compared: torsional shear in the Ø10 journal: 40.9 vs 40.7 MPa by hand"@en .
+:chk_mesh_static a sd:Check ;
+    rdfs:label "Mesh check +0.8 %"@en ;
+    rdfs:comment "Compared: undercut element size halved: 269.1 to 271.2 MPa (147,883 nodes)"@en .
+:chk_mesh_modal a sd:Check ;
+    rdfs:label "Mesh check ≤0.4 %"@en ;
+    rdfs:comment "Compared: mesh 1.5 to 1.2 mm (154,632 nodes): all 6 modes within 0.4 % (largest change 0.31 %)"@en .
+:dec_strength a sd:Decision ;
+    rdfs:label "Strength verdict"@en ;
+    rdfs:comment "Status: open"@en ;
+    rdfs:comment "Needs: the yield strength and a safety factor; neither is on the drawing"@en ;
+    sd:dependsOn :res_stress ;
+    sd:needsInput :material .

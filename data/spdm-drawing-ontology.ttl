@@ -1,0 +1,88 @@
+@prefix sd: <https://www.spdm-tech.de/ontology/drawing#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://www.spdm-tech.de/ontology/drawing> a owl:Ontology ;
+    rdfs:label "SPDM Tech drawing and simulation ontology" ;
+    rdfs:comment "Classes and relations for data derived from 2D technical drawings, and the simulations that use it." .
+
+sd:Artefact a owl:Class ;
+    rdfs:label "Artefact"@en ; rdfs:comment "An engineering document or data set."@en .
+sd:Drawing a owl:Class ; rdfs:subClassOf sd:Artefact ;
+    rdfs:label "Drawing"@en ; rdfs:comment "A 2D technical drawing."@en .
+sd:CADModel a owl:Class ; rdfs:subClassOf sd:Artefact ;
+    rdfs:label "CAD model"@en ; rdfs:comment "A parametric 3D model."@en .
+sd:Part a owl:Class ;
+    rdfs:label "Part"@en ; rdfs:comment "A manufactured single part."@en .
+sd:Feature a owl:Class ;
+    rdfs:label "Feature"@en ; rdfs:comment "A functional region of a part."@en .
+sd:RotationalFeature a owl:Class ; rdfs:subClassOf sd:Feature ;
+    rdfs:label "Rotational feature"@en ; rdfs:comment "A feature turned about the part axis."@en .
+sd:TransitionFeature a owl:Class ; rdfs:subClassOf sd:Feature ;
+    rdfs:label "Transition feature"@en ; rdfs:comment "A radius, flank or undercut joining two features."@en .
+sd:HoleFeature a owl:Class ; rdfs:subClassOf sd:Feature ;
+    rdfs:label "Hole feature"@en ; rdfs:comment "A drilled, bored or threaded hole."@en .
+sd:Characteristic a owl:Class ;
+    rdfs:label "Characteristic"@en ; rdfs:comment "A specified, measurable property of a feature."@en .
+sd:Dimension a owl:Class ; rdfs:subClassOf sd:Characteristic ;
+    rdfs:label "Dimension"@en ; rdfs:comment "A nominal size: diameter, length, radius or count."@en .
+sd:Tolerance a owl:Class ; rdfs:subClassOf sd:Characteristic ;
+    rdfs:label "Tolerance"@en ; rdfs:comment "A permitted deviation from a dimension."@en .
+sd:Material a owl:Class ;
+    rdfs:label "Material"@en ; rdfs:comment "The material a part is made of."@en .
+sd:Specification a owl:Class ;
+    rdfs:label "Specification"@en ; rdfs:comment "A rule the part must meet."@en .
+sd:Standard a owl:Class ; rdfs:subClassOf sd:Specification ;
+    rdfs:label "Standard"@en ; rdfs:comment "A published standard, e.g. ISO or DIN."@en .
+sd:Requirement a owl:Class ; rdfs:subClassOf sd:Specification ;
+    rdfs:label "Requirement"@en ; rdfs:comment "A note or requirement on the drawing."@en .
+sd:Analysis a owl:Class ;
+    rdfs:label "Analysis"@en ; rdfs:comment "A simulation of the part's behaviour."@en .
+sd:StaticAnalysis a owl:Class ; rdfs:subClassOf sd:Analysis ;
+    rdfs:label "Static analysis"@en ; rdfs:comment "Stresses and deformation under steady loads."@en .
+sd:ModalAnalysis a owl:Class ; rdfs:subClassOf sd:Analysis ;
+    rdfs:label "Modal analysis"@en ; rdfs:comment "Natural frequencies and mode shapes."@en .
+sd:AnalysisSetup a owl:Class ;
+    rdfs:label "Analysis setup"@en ; rdfs:comment "What an analysis assumes: loads, supports and mesh."@en .
+sd:LoadCase a owl:Class ; rdfs:subClassOf sd:AnalysisSetup ;
+    rdfs:label "Load case"@en ; rdfs:comment "A load acting on the part."@en .
+sd:BoundaryCondition a owl:Class ; rdfs:subClassOf sd:AnalysisSetup ;
+    rdfs:label "Boundary condition"@en ; rdfs:comment "A support or fixed surface."@en .
+sd:Mesh a owl:Class ; rdfs:subClassOf sd:AnalysisSetup ;
+    rdfs:label "Mesh"@en ; rdfs:comment "The finite element discretisation."@en .
+sd:Result a owl:Class ;
+    rdfs:label "Result"@en ; rdfs:comment "A quantity an analysis produced."@en .
+sd:StressResult a owl:Class ; rdfs:subClassOf sd:Result ;
+    rdfs:label "Stress result"@en ; rdfs:comment "A stress value at a location."@en .
+sd:FrequencyResult a owl:Class ; rdfs:subClassOf sd:Result ;
+    rdfs:label "Frequency result"@en ; rdfs:comment "A natural frequency and its mode shape."@en .
+sd:Verification a owl:Class ;
+    rdfs:label "Verification"@en ; rdfs:comment "Evidence that a result can be trusted."@en .
+sd:Check a owl:Class ; rdfs:subClassOf sd:Verification ;
+    rdfs:label "Check"@en ; rdfs:comment "A comparison with a hand calculation or a refined mesh."@en .
+sd:Decision a owl:Class ;
+    rdfs:label "Decision"@en ; rdfs:comment "An engineering decision that relies on results."@en .
+
+sd:describes a owl:ObjectProperty ; rdfs:domain sd:Drawing ; rdfs:range sd:Part ; rdfs:label "describes"@en .
+sd:represents a owl:ObjectProperty ; rdfs:domain sd:CADModel ; rdfs:range sd:Part ; rdfs:label "represents"@en .
+sd:derivedFrom a owl:ObjectProperty ; rdfs:domain sd:CADModel ; rdfs:range sd:Drawing ; rdfs:label "derived from"@en .
+sd:hasFeature a owl:ObjectProperty ; rdfs:domain sd:Part ; rdfs:range sd:Feature ; rdfs:label "has feature"@en .
+sd:hasCharacteristic a owl:ObjectProperty ; rdfs:domain sd:Feature ; rdfs:range sd:Characteristic ; rdfs:label "has characteristic"@en .
+sd:madeOf a owl:ObjectProperty ; rdfs:domain sd:Part ; rdfs:range sd:Material ; rdfs:label "made of"@en .
+sd:conformsTo a owl:ObjectProperty ; rdfs:domain sd:Feature ; rdfs:range sd:Standard ; rdfs:label "conforms to"@en .
+sd:toleratedBy a owl:ObjectProperty ; rdfs:domain sd:Characteristic ; rdfs:range sd:Standard ; rdfs:label "toleranced according to"@en .
+sd:subjectTo a owl:ObjectProperty ; rdfs:domain sd:Part ; rdfs:range sd:Specification ; rdfs:label "subject to"@en .
+sd:analyses a owl:ObjectProperty ; rdfs:domain sd:Analysis ; rdfs:range sd:Part ; rdfs:label "analyses"@en .
+sd:usesModel a owl:ObjectProperty ; rdfs:domain sd:Analysis ; rdfs:range sd:CADModel ; rdfs:label "uses model"@en .
+sd:usesMaterial a owl:ObjectProperty ; rdfs:domain sd:Analysis ; rdfs:range sd:Material ; rdfs:label "uses material data"@en .
+sd:hasSetup a owl:ObjectProperty ; rdfs:domain sd:Analysis ; rdfs:range sd:AnalysisSetup ; rdfs:label "has setup"@en .
+sd:actsOn a owl:ObjectProperty ; rdfs:domain sd:LoadCase ; rdfs:range sd:Feature ; rdfs:label "acts on"@en .
+sd:holds a owl:ObjectProperty ; rdfs:domain sd:BoundaryCondition ; rdfs:range sd:Feature ; rdfs:label "holds"@en .
+sd:produces a owl:ObjectProperty ; rdfs:domain sd:Analysis ; rdfs:range sd:Result ; rdfs:label "produces"@en .
+sd:locatedAt a owl:ObjectProperty ; rdfs:domain sd:Result ; rdfs:range sd:Feature ; rdfs:label "located at"@en .
+sd:verifiedBy a owl:ObjectProperty ; rdfs:domain sd:Result ; rdfs:range sd:Verification ; rdfs:label "verified by"@en .
+sd:dependsOn a owl:ObjectProperty ; rdfs:domain sd:Decision ; rdfs:range sd:Result ; rdfs:label "depends on"@en .
+sd:needsInput a owl:ObjectProperty ; rdfs:domain sd:Decision ; rdfs:range sd:Material ; rdfs:label "needs input from"@en .
+sd:value a owl:DatatypeProperty ; rdfs:label "value"@en .
+sd:modelParameter a owl:DatatypeProperty ; rdfs:label "parameter in the model"@en .

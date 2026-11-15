@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0d12" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo/spdm-tech-favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/spdm-tech-favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/logo/spdm-tech-icon-180.png">
+  <link href="/assets/css/site.css" rel="stylesheet">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>PCB Thermal Simulation | SPDM Technologies</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="PCB Thermal Simulation" />
+<meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From Gerber files to a checked thermal answer for your circuit board, without building a CAD model." />
+<meta name="twitter:description" property="og:description" content="From Gerber files to a checked thermal answer for your circuit board, without building a CAD model." />
+<link rel="canonical" href="https://www.spdm-tech.de/pcb-thermal/" />
+<meta property="og:url" content="https://www.spdm-tech.de/pcb-thermal/" />
+<meta property="og:site_name" content="SPDM Technologies" />
+<meta property="og:image" content="https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg" />
+<meta name="twitter:title" content="PCB Thermal Simulation" />
+<meta name="twitter:site" content="@krae_dan" />
+<meta name="twitter:creator" content="@krae_dan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"From Gerber files to a checked thermal answer for your circuit board, without building a CAD model.","headline":"PCB Thermal Simulation","image":"https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/pcb-thermal/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand lockup" href="/" aria-label="SPDM Tech, home"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+<span class="word"><b>SPDM</b> <i>Tech</i></span></a>
+      <nav class="site-nav" aria-label="Main">
+        
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/capabilities/" aria-current="true">Capabilities</a></li>
+          
+          <li><a href="/team/">Team</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/contact/">Contact</a></li>
+          
+          <li><a href="/impressum/">Impressum</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Capability · PCB thermal simulation</p>
+      <h1>From Gerber files to a thermal answer.</h1>
+      <p class="lead">Send the manufacturing data your board house already has. Get the hot spots, how hot they run and how fast they heat up, each with its check. No CAD model needed.</p>
+      <a class="button" href="/contact/">Talk to us</a>
+    </div>
+    <figure class="board-figure">
+      <div class="board-stack">
+        <img src="/images/pcb/pcb-gerber-top-1200.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w, /images/pcb/pcb-gerber-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 640px" alt="Top side of the circuit board as rendered from its Gerber files" width="1200" height="1181" decoding="async">
+
+        <img src="/images/pcb/pcb-temp-top-1200.webp" srcset="/images/pcb/pcb-temp-top-480.webp 480w, /images/pcb/pcb-temp-top-800.webp 800w, /images/pcb/pcb-temp-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 640px" alt="" width="1200" height="1181" class="board-heat" style="opacity:.55" decoding="async">
+
+      </div>
+      <figcaption>Temperature rise at 1 W, laid over the board layout</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block key-figures-block">
+  <div class="wrap">
+    <ul class="credentials">
+      <li><strong>+53.6&nbsp;K</strong><span>Hottest pad, 1 W into the microcontroller (U1)</span></li>
+      <li><strong>30&nbsp;s</strong><span>To reach 63 % of the final temperature</span></li>
+      <li><strong>132&nbsp;s</strong><span>To reach 90 % of the final temperature</span></li>
+      <li><strong>0</strong><span>CAD models built: the geometry comes straight from the Gerber files</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The result</p>
+    <h2 class="title">Where the heat goes, on the layout you know.</h2>
+    <div class="overlay-grid">
+      <div class="compare" id="compare" style="--reveal:50%;--opacity:1">
+        <img src="/images/pcb/pcb-gerber-top-1200.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w, /images/pcb/pcb-gerber-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 700px" alt="Board layout from the Gerber files" width="1200" height="1181" decoding="async">
+
+        <img src="/images/pcb/pcb-temp-top-1200.webp" srcset="/images/pcb/pcb-temp-top-480.webp 480w, /images/pcb/pcb-temp-top-800.webp 800w, /images/pcb/pcb-temp-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 700px" alt="Steady-state temperature rise on the top of the board" width="1200" height="1181" class="compare-heat" decoding="async">
+
+        <span class="compare-line" aria-hidden="true"></span>
+        <span class="hotspot" style="left:35.65%;top:39.84%"><span>+53.6 K</span></span>
+      </div>
+      <div class="overlay-controls">
+        <p class="meaning">Drag across the board to compare the layout with the temperature field, or blend the two to see which traces and pads carry the heat.</p>
+        <div class="presets">
+          <button class="tab" type="button" data-reveal="50" data-opacity="100" aria-pressed="true">Compare</button>
+          <button class="tab" type="button" data-reveal="0" data-opacity="55" aria-pressed="false">Overlay</button>
+        </div>
+        <label class="range">
+          <span>Dividing line: layout on the left, temperature on the right</span>
+          <input type="range" id="reveal" min="0" max="100" value="50">
+        </label>
+        <label class="range">
+          <span>Opacity of the temperature</span>
+          <input type="range" id="opacity" min="0" max="100" value="100">
+        </label>
+        <div class="scale" aria-hidden="true">
+          <span class="scale-bar"></span>
+          <span class="scale-labels"><span>0 K</span><span>54 K above ambient</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2 class="title">Four steps, each one a script you can rerun.</h2>
+    <ol class="steps">
+      <li>
+        <img src="/images/pcb/pcb-gerber-top-1200.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w, /images/pcb/pcb-gerber-top-1200.webp 1200w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1200" height="1181" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">1 · Input</p>
+        <h3>Gerber and drill files</h3>
+        <p>Exactly as they go to the board house: copper, mask, silkscreen, outline, 93 plated and 6 non-plated holes.</p>
+      </li>
+      <li>
+        <img src="/images/pcb/pcb-layers-1200.webp" srcset="/images/pcb/pcb-layers-480.webp 480w, /images/pcb/pcb-layers-800.webp 800w, /images/pcb/pcb-layers-1200.webp 1200w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1200" height="1104" loading="lazy" decoding="async">
+
+        <p class="label">2 · Model</p>
+        <h3>Copper, FR-4 and plating</h3>
+        <p>50 µm copper on each side, a 1.5 mm FR-4 core and 25 µm plating in every hole.</p>
+      </li>
+      <li>
+        <img src="/images/pcb/pcb-mesh-1000.webp" srcset="/images/pcb/pcb-mesh-480.webp 480w, /images/pcb/pcb-mesh-800.webp 800w, /images/pcb/pcb-mesh-1000.webp 1000w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1000" height="1000" loading="lazy" decoding="async">
+
+        <p class="label">3 · Mesh</p>
+        <h3>334,889 nodes</h3>
+        <p>Layered elements through the board, connected everywhere, finest where the heat enters.</p>
+      </li>
+      <li>
+        <img src="/images/pcb/pcb-temp-top-1200.webp" srcset="/images/pcb/pcb-temp-top-480.webp 480w, /images/pcb/pcb-temp-top-800.webp 800w, /images/pcb/pcb-temp-top-1200.webp 1200w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1200" height="1181" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">4 · Solve</p>
+        <h3>Steady state and heat-up</h3>
+        <p>CalculiX solves the temperature field: at equilibrium and second by second after power-on.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Over time</p>
+    <h2 class="title">Heating up, from power-on to steady state.</h2>
+    <div class="heat-grid">
+      <div class="heat-boards">
+        <figure>
+          <img id="heat-top" src="/images/pcb/pcb-heat-top-0030000.jpg" alt="Temperature rise on the top of the board" width="640" height="630">
+          <figcaption>Top</figcaption>
+        </figure>
+        <figure>
+          <img id="heat-bottom" src="/images/pcb/pcb-heat-bottom-0030000.jpg" alt="Temperature rise on the bottom of the board, seen through the board" width="640" height="630">
+          <figcaption>Bottom, seen through the board</figcaption>
+        </figure>
+      </div>
+      <div class="heat-side">
+        <p class="clock mono" id="heat-clock">t = 30 s</p>
+        <dl class="heat-values mono">
+          <dt>Top</dt><dd id="heat-topv"></dd>
+          <dt>Bottom</dt><dd id="heat-bottomv"></dd>
+        </dl>
+        <p class="meaning" id="heat-caption"></p>
+        <label class="range">
+          <span>Time after power-on</span>
+          <input type="range" id="heat-time" min="0" max="12" value="6">
+        </label>
+        <button class="tab" type="button" id="heat-play">Play</button>
+        <svg class="heat-curve" id="heat-curve" viewBox="0 0 640 230" role="img" aria-label="Temperature rise at the hottest point on the top, over time from 0.01 s to 1000 s on a logarithmic axis"></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap evidence-grid">
+    <div>
+      <p class="eyebrow">The evidence</p>
+      <h2 class="title">Every number comes with its check.</h2>
+      <p class="lead">An answer for a design decision has to hold up. These checks run with every analysis and are reported, not assumed.</p>
+    </div>
+    <article class="dossier">
+      <div class="dossier-head mono"><span>Decision dossier</span><span>Arduino Nano IO Shield</span></div>
+      <ul class="evidence-list">
+        <li><span>Energy balance</span><strong class="mono">1.00005 W of 1 W</strong></li>
+        <li><span>Hand check, mean surface rise P / hA</span><strong class="mono">11.204 vs 11.204 K</strong></li>
+        <li><span>Mesh refined at U1</span><strong class="mono">+1.6 % at the hottest pad</strong></li>
+        <li><span>Time step halved</span><strong class="mono">+0.3 % at 100 s</strong></li>
+        <li><span>Lumped model, board mean at 100 s</span><strong class="mono">6.26 vs 6.34 K</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The whole story</p>
+    <h2 class="title">From Gerber files to a transient thermal answer, in 77 seconds.</h2>
+    <video class="promo-video" controls preload="none" playsinline poster="/images/pcb/pcb-thermal-promo-poster.jpg" width="1280" height="720">
+      <source src="/images/pcb/pcb-thermal-promo-720.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="note assumptions">Assumptions: 1 W spread evenly over the 32 pads of U1, the chip itself not modelled. Convection h = 12 W/m²K on the top, bottom and edges. Temperatures are rises above ambient air. The heat-up starts with time steps of 1 ms. Board: Arduino Nano IO Shield, Gerber files from freegerber.com.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-copy">
+      <p class="eyebrow cta-eyebrow">Pilot partners wanted</p>
+      <h2>Have a board that runs warm? Send us its Gerber files.</h2>
+      <p class="cta-text">SPDM Tech is in its build-up phase. As one of the first pilot partners, you bring one real question, from a circuit board, a drawing or a simulation process, and get a checked answer.</p>
+    </div>
+    <a class="button" href="/contact/">Become a pilot partner</a>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  var data = {"scale":{"minK":0.0,"maxK":54.0},"steady":{"maxK":53.6,"hottest":{"left":35.65,"top":39.84}},"mesh":{"nodes":334889,"elements":287344},"frames":[{"t":0.01,"name":"0000010","topK":0.7,"bottomK":0.0},{"t":0.1,"name":"0000100","topK":4.3,"bottomK":0.3},{"t":1.0,"name":"0001000","topK":11.2,"bottomK":3.4},{"t":5.0,"name":"0005000","topK":18.1,"bottomK":9.4},{"t":10.0,"name":"0010000","topK":23.2,"bottomK":14.5},{"t":20.0,"name":"0020000","topK":29.5,"bottomK":21.0},{"t":30.0,"name":"0030000","topK":33.8,"bottomK":25.4},{"t":60.0,"name":"0060000","topK":41.2,"bottomK":32.9},{"t":100.0,"name":"0100000","topK":46.1,"bottomK":37.7},{"t":200.0,"name":"0200000","topK":50.9,"bottomK":42.5},{"t":300.0,"name":"0300000","topK":52.5,"bottomK":44.1},{"t":600.0,"name":"0600000","topK":53.5,"bottomK":45.2},{"t":1000.0,"name":"1000000","topK":53.6,"bottomK":45.3}],"curve":[[0.001,0.09],[0.002,0.17],[0.003,0.24],[0.004,0.32],[0.005,0.39],[0.006,0.45],[0.007,0.52],[0.008,0.58],[0.009,0.64],[0.01,0.7],[0.0125,0.85],[0.015,0.99],[0.0175,1.12],[0.02,1.25],[0.0225,1.38],[0.025,1.51],[0.0275,1.64],[0.03,1.76],[0.0325,1.88],[0.035,1.99],[0.0375,2.11],[0.04,2.22],[0.0425,2.32],[0.045,2.43],[0.0475,2.53],[0.05,2.63],[0.0525,2.73],[0.055,2.83],[0.0575,2.92],[0.06,3.01],[0.0625,3.1],[0.065,3.19],[0.0675,3.28],[0.07,3.36],[0.0725,3.45],[0.075,3.53],[0.0775,3.61],[0.08,3.69],[0.0825,3.76],[0.085,3.84],[0.0875,3.91],[0.09,3.99],[0.0925,4.06],[0.095,4.13],[0.0975,4.19],[0.1,4.26],[0.125,4.84],[0.15,5.34],[0.175,5.78],[0.2,6.17],[0.225,6.52],[0.25,6.84],[0.275,7.12],[0.3,7.38],[0.325,7.63],[0.35,7.85],[0.375,8.06],[0.4,8.25],[0.425,8.44],[0.45,8.61],[0.475,8.78],[0.5,8.94],[0.525,9.09],[0.55,9.23],[0.575,9.37],[0.6,9.5],[0.625,9.63],[0.65,9.75],[0.675,9.87],[0.7,9.98],[0.725,10.09],[0.75,10.2],[0.775,10.3],[0.8,10.41],[0.825,10.51],[0.85,10.61],[0.875,10.71],[0.9,10.8],[0.925,10.89],[0.95,10.99],[0.975,11.07],[1.0,11.16],[1.25,11.9],[1.5,12.54],[1.75,13.11],[2.0,13.64],[2.25,14.12],[2.5,14.57],[2.75,14.99],[3.0,15.39],[3.25,15.78],[3.5,16.14],[3.75,16.5],[4.0,16.84],[4.25,17.18],[4.5,17.5],[4.75,17.81],[5.0,18.12],[5.25,18.42],[5.5,18.71],[5.75,19.0],[6.0,19.28],[6.25,19.56],[6.5,19.83],[6.75,20.09],[7.0,20.35],[7.25,20.61],[7.5,20.86],[7.75,21.11],[8.0,21.35],[8.25,21.59],[8.5,21.82],[8.75,22.05],[9.0,22.28],[9.25,22.5],[9.5,22.72],[9.75,22.94],[10.0,23.16],[12.5,25.03],[15.0,26.7],[17.5,28.19],[20.0,29.54],[22.5,30.76],[25.0,31.87],[27.5,32.89],[30.0,33.83],[32.5,34.69],[35.0,35.5],[37.5,36.25],[40.0,36.95],[42.5,37.6],[45.0,38.22],[47.5,38.8],[50.0,39.34],[52.5,39.86],[55.0,40.34],[57.5,40.81],[60.0,41.24],[62.5,41.66],[65.0,42.06],[67.5,42.43],[70.0,42.79],[72.5,43.14],[75.0,43.46],[77.5,43.78],[80.0,44.08],[82.5,44.37],[85.0,44.64],[87.5,44.91],[90.0,45.16],[92.5,45.41],[95.0,45.64],[97.5,45.87],[100.0,46.09],[102.5,46.28],[105.0,46.49],[107.5,46.68],[110.0,46.87],[112.5,47.05],[115.0,47.23],[117.5,47.4],[120.0,47.56],[122.5,47.72],[125.0,47.88],[127.5,48.03],[130.0,48.17],[132.5,48.31],[135.0,48.45],[137.5,48.58],[140.0,48.7],[142.5,48.83],[145.0,48.95],[147.5,49.06],[150.0,49.17],[152.5,49.28],[155.0,49.39],[157.5,49.49],[160.0,49.59],[162.5,49.69],[165.0,49.79],[167.5,49.88],[170.0,49.97],[172.5,50.05],[175.0,50.14],[177.5,50.22],[180.0,50.3],[182.5,50.38],[185.0,50.45],[187.5,50.53],[190.0,50.6],[192.5,50.67],[195.0,50.74],[197.5,50.81],[200.0,50.87],[202.5,50.93],[205.0,50.99],[207.5,51.05],[210.0,51.11],[212.5,51.17],[215.0,51.23],[217.5,51.28],[220.0,51.33],[222.5,51.38],[225.0,51.44],[227.5,51.48],[230.0,51.53],[232.5,51.58],[235.0,51.62],[237.5,51.67],[240.0,51.71],[242.5,51.76],[245.0,51.8],[247.5,51.84],[250.0,51.88],[252.5,51.92],[255.0,51.95],[257.5,51.99],[260.0,52.03],[262.5,52.06],[265.0,52.1],[267.5,52.13],[270.0,52.16],[272.5,52.19],[275.0,52.22],[277.5,52.26],[280.0,52.29],[282.5,52.31],[285.0,52.34],[287.5,52.37],[290.0,52.4],[292.5,52.42],[295.0,52.45],[297.5,52.48],[300.0,52.5],[305.0,52.55],[310.0,52.59],[315.0,52.64],[320.0,52.68],[325.0,52.72],[330.0,52.75],[335.0,52.79],[340.0,52.82],[345.0,52.86],[350.0,52.89],[355.0,52.92],[360.0,52.95],[365.0,52.98],[370.0,53.01],[375.0,53.03],[380.0,53.06],[385.0,53.08],[390.0,53.1],[395.0,53.13],[400.0,53.15],[405.0,53.17],[410.0,53.19],[415.0,53.2],[420.0,53.22],[425.0,53.24],[430.0,53.26],[435.0,53.27],[440.0,53.29],[445.0,53.3],[450.0,53.32],[455.0,53.33],[460.0,53.34],[465.0,53.35],[470.0,53.37],[475.0,53.38],[480.0,53.39],[485.0,53.4],[490.0,53.41],[495.0,53.42],[500.0,53.43],[505.0,53.44],[510.0,53.44],[515.0,53.45],[520.0,53.46],[525.0,53.47],[530.0,53.47],[535.0,53.48],[540.0,53.49],[545.0,53.49],[550.0,53.5],[555.0,53.51],[560.0,53.51],[565.0,53.52],[570.0,53.52],[575.0,53.53],[580.0,53.53],[585.0,53.54],[590.0,53.54],[595.0,53.55],[600.0,53.55],[605.0,53.55],[610.0,53.56],[615.0,53.56],[620.0,53.56],[625.0,53.57],[630.0,53.57],[635.0,53.57],[640.0,53.58],[645.0,53.58],[650.0,53.58],[655.0,53.58],[660.0,53.59],[665.0,53.59],[670.0,53.59],[675.0,53.59],[680.0,53.59],[685.0,53.6],[690.0,53.6],[695.0,53.6],[700.0,53.6],[705.0,53.6],[710.0,53.61],[715.0,53.61],[720.0,53.61],[725.0,53.61],[730.0,53.61],[735.0,53.61],[740.0,53.61],[745.0,53.61],[750.0,53.62],[755.0,53.62],[760.0,53.62],[765.0,53.62],[770.0,53.62],[775.0,53.62],[780.0,53.62],[785.0,53.62],[790.0,53.62],[795.0,53.62],[800.0,53.63],[805.0,53.63],[810.0,53.63],[815.0,53.63],[820.0,53.63],[825.0,53.63],[830.0,53.63],[835.0,53.63],[840.0,53.63],[845.0,53.63],[850.0,53.63],[855.0,53.63],[860.0,53.63],[865.0,53.63],[870.0,53.63],[875.0,53.63],[880.0,53.63],[885.0,53.63],[890.0,53.63],[895.0,53.63],[900.0,53.64],[905.0,53.64],[910.0,53.64],[915.0,53.64],[920.0,53.64],[925.0,53.64],[930.0,53.64],[935.0,53.64],[940.0,53.64],[945.0,53.64],[950.0,53.64],[955.0,53.64],[960.0,53.64],[965.0,53.64],[970.0,53.64],[975.0,53.64],[980.0,53.64],[985.0,53.64],[990.0,53.64],[995.0,53.64],[1000.0,53.64]],"curveSource":"hottest point on the top surface; log-spaced run to 100 s, half-step run (2.5 s) to 300 s, then exp(-t/tau) join to the 1000 s field","timeTo63PctS":29.9,"timeTo90PctS":131.9};
+  var base = '/images/pcb/';
+
+  // overlay
+  var compare = document.getElementById('compare');
+  var reveal = document.getElementById('reveal');
+  var opacity = document.getElementById('opacity');
+  var presets = Array.prototype.slice.call(document.querySelectorAll('.presets .tab'));
+  function applyOverlay() {
+    compare.style.setProperty('--reveal', reveal.value + '%');
+    compare.style.setProperty('--opacity', opacity.value / 100);
+    presets.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.reveal === reveal.value && b.dataset.opacity === opacity.value ? 'true' : 'false');
+    });
+  }
+  reveal.addEventListener('input', applyOverlay);
+  opacity.addEventListener('input', applyOverlay);
+  presets.forEach(function (b) {
+    b.addEventListener('click', function () { reveal.value = b.dataset.reveal; opacity.value = b.dataset.opacity; applyOverlay(); });
+  });
+  function revealAt(clientX) {
+    var r = compare.getBoundingClientRect();
+    reveal.value = Math.round(Math.max(0, Math.min(1, (clientX - r.left) / r.width)) * 100);
+    applyOverlay();
+  }
+  var dragging = false;
+  compare.addEventListener('pointerdown', function (e) { dragging = true; compare.setPointerCapture(e.pointerId); revealAt(e.clientX); });
+  compare.addEventListener('pointermove', function (e) { if (dragging) revealAt(e.clientX); });
+  compare.addEventListener('pointerup', function () { dragging = false; });
+  applyOverlay();
+
+  // heat-up
+  var frames = data.frames;
+  var slider = document.getElementById('heat-time');
+  var top = document.getElementById('heat-top');
+  var bottom = document.getElementById('heat-bottom');
+  var svg = document.getElementById('heat-curve');
+  var ns = 'http://www.w3.org/2000/svg';
+  var X0 = 56, X1 = 624, Y0 = 196, Y1 = 14, TMIN = 0.01, TMAX = 1000, KMAX = 60;
+  function px(t) { return X0 + (Math.log(t / TMIN) / Math.log(TMAX / TMIN)) * (X1 - X0); }
+  function py(k) { return Y0 - (k / KMAX) * (Y0 - Y1); }
+  function el(name, attrs, text) {
+    var n = document.createElementNS(ns, name);
+    for (var a in attrs) n.setAttribute(a, attrs[a]);
+    if (text) n.textContent = text;
+    svg.appendChild(n);
+    return n;
+  }
+  [0, 20, 40, 60].forEach(function (k) {
+    el('line', { x1: X0, x2: X1, y1: py(k), y2: py(k), class: 'grid' });
+    el('text', { x: X0 - 10, y: py(k) + 4, 'text-anchor': 'end' }, k + ' K');
+  });
+  [0.01, 0.1, 1, 10, 100, 1000].forEach(function (t) {
+    el('text', { x: px(t), y: Y0 + 22, 'text-anchor': 'middle' }, t === 1000 ? '1000 s' : String(t));
+  });
+  el('polyline', { points: data.curve.map(function (p) { return px(p[0]) + ',' + py(p[1]); }).join(' '), class: 'curve' });
+  var marker = el('circle', { r: 6, class: 'marker' });
+  frames.forEach(function (f) {
+    var i = new Image(); i.src = base + 'pcb-heat-top-' + f.name + '.jpg';
+    var j = new Image(); j.src = base + 'pcb-heat-bottom-' + f.name + '.jpg';
+  });
+  function caption(t) {
+    if (t < 1) return 'Copper first: the U1 pads and their tracks take the heat. In the first second, the depth of the heating in the FR-4 is below the mesh resolution.';
+    if (t <= 40) return 'Heat crosses the 1.5 mm FR-4: the bottom lags behind the top.';
+    if (t < 500) return 'The whole board warms up, with a time constant of about 120 s.';
+    return 'Steady state: convection carries away the full watt.';
+  }
+  function showFrame() {
+    var f = frames[slider.value];
+    var name = f.name;
+    top.src = base + 'pcb-heat-top-' + name + '.jpg';
+    bottom.src = base + 'pcb-heat-bottom-' + name + '.jpg';
+    document.getElementById('heat-clock').textContent = 't = ' + f.t + ' s';
+    document.getElementById('heat-topv').textContent = '+' + f.topK.toFixed(1) + ' K';
+    document.getElementById('heat-bottomv').textContent = '+' + f.bottomK.toFixed(1) + ' K';
+    document.getElementById('heat-caption').textContent = caption(f.t);
+    marker.setAttribute('cx', px(f.t));
+    marker.setAttribute('cy', py(f.topK));
+  }
+  slider.addEventListener('input', showFrame);
+  var timer = null, play = document.getElementById('heat-play');
+  play.addEventListener('click', function () {
+    if (timer) { clearInterval(timer); timer = null; play.textContent = 'Play'; return; }
+    if (+slider.value >= frames.length - 1) slider.value = 0;
+    play.textContent = 'Pause';
+    timer = setInterval(function () {
+      if (+slider.value >= frames.length - 1) { clearInterval(timer); timer = null; play.textContent = 'Play'; return; }
+      slider.value = +slider.value + 1; showFrame();
+    }, 900);
+  });
+  showFrame();
+})();
+</script>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span class="foot-brand"><svg class="foot-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
+      <ul>
+        
+        <li><a href="https://github.com/daniel.kraetschmer.github.io" rel="noopener">Github</a></li>
+        
+        <li><a href="https://twitter.com/krae_dan" rel="noopener">Twitter</a></li>
+        
+        <li><a href="mailto:daniel.kraetschmer@spdm-tech.de">Email</a></li>
+        
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+      <p class="foot-status">SPDM Tech is in its build-up phase. The results shown come from our own demonstration parts and public data. <a href="/about/#where-we-are">Where we are</a></p>
+    </div>
+  </footer>
+</body>
+</html>
