@@ -1,6 +1,9 @@
-/* SPDM Tech dark theme. Loaded by _layouts/default.html, so every page uses it. */
+/* SPDM Tech theme. Loaded by _layouts/default.html, so every page uses it.
+   Dark is the default. Light only applies when a visitor picks it with the header toggle,
+   which sets <html data-theme="light"> (remembered in localStorage, see default.html). */
 
 :root {
+  color-scheme: dark;
   --bg: #0a0d12;
   --surface: #11161e;
   --surface-2: #171d27;
@@ -11,7 +14,47 @@
   --data: #86c8ea;
   --eng: #63d3ab;
   --hot: #fde725;
+  --button-hover: #ffffff;
+  --tag-ai: #b4a7f5;
 }
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eceef2;
+  --line: #d3d9e0;
+  --text: #10151c;
+  --soft: #2c3440;
+  --muted: #586372;
+  --data: #1d6a96;
+  --eng: #13765a;
+  --hot: #440154;
+  --button-hover: #2c3440;
+  --tag-ai: #5b45c9;
+}
+
+/* Renders, videos and the knowledge graph were made on the dark background, so in light mode they stay
+   dark "screens": every token is reset to the dark values inside these frames. */
+:root[data-theme="light"] :is(.drawing-frame, .dossier-main img, .dossier-board, .panel img, .compare,
+  .steps img, .heat-boards img, .cap-media, .promo-video, .model-render, .panel-board) {
+  color-scheme: dark;
+  --bg: #0a0d12;
+  --surface: #11161e;
+  --surface-2: #171d27;
+  --line: #2a3441;
+  --text: #eef1f5;
+  --soft: #d7dde4;
+  --muted: #a7b2bf;
+  --data: #86c8ea;
+  --eng: #63d3ab;
+  --hot: #fde725;
+  --button-hover: #ffffff;
+  color: var(--text);
+}
+
+:root[data-theme="light"] :is(.panel-board, .cap-media, .dossier-board) { background: var(--bg); }
+
 
 * { box-sizing: border-box; }
 
@@ -94,7 +137,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--hot); outline-o
   text-decoration: none;
 }
 
-.button:hover { background: #fff; }
+.button:hover { background: var(--button-hover); }
 
 .badge {
   display: inline-block;
@@ -988,7 +1031,7 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
 
 .pub-tag.is-dossier { --accent: var(--text); }
 
-.pub-tag.is-ai { --accent: #b4a7f5; }
+.pub-tag.is-ai { --accent: var(--tag-ai); }
 
 .pub-tag + .pub-tag { margin-left: 6px; }
 
@@ -1056,3 +1099,37 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
 }
 
 .impressum-head { margin: 0 0 16px; font-size: 22px; }
+
+/* ---------------------------------------------------------------- dark / light toggle */
+
+.site-nav { margin-left: auto; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: -16px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+
+.theme-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+@media (max-width: 960px) {
+  .theme-toggle { order: 1; margin-left: auto; }
+  .site-nav { order: 2; width: 100%; margin-left: 0; }
+}

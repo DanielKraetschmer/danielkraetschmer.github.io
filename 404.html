@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0a0d12" />
+  <script>
+    /* Dark is the default; light only when the visitor chose it with the header toggle. */
+    try { if (localStorage.getItem('theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f5f7'); } } catch (e) {}
+  </script>
   <link rel="icon" type="image/svg+xml" href="/images/logo/spdm-tech-favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/spdm-tech-favicon-32.png">
   <link rel="apple-touch-icon" href="/images/logo/spdm-tech-icon-180.png">
@@ -54,6 +58,10 @@
           
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Light mode" title="Switch between dark and light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
     </div>
   </header>
 
@@ -77,9 +85,9 @@
 Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
       <ul>
         
-        <li><a href="https://github.com/daniel.kraetschmer.github.io" rel="noopener">Github</a></li>
+        <li><a href="https://github.com/DanielKraetschmer" rel="noopener">GitHub</a></li>
         
-        <li><a href="https://twitter.com/krae_dan" rel="noopener">Twitter</a></li>
+        <li><a href="https://x.com/krae_dan" rel="noopener">X</a></li>
         
         <li><a href="mailto:daniel.kraetschmer@spdm-tech.de">Email</a></li>
         
@@ -90,5 +98,20 @@ Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
       <p class="foot-status">SPDM Tech is in its build-up phase. The results shown come from our own demonstration parts and public data. <a href="/about/#where-we-are">Where we are</a></p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.querySelector('.theme-toggle'), meta = document.querySelector('meta[name="theme-color"]');
+      if (!btn) return;
+      function show() { btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false'); }
+      show();
+      btn.addEventListener('click', function () {
+        var light = root.getAttribute('data-theme') !== 'light';
+        if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+        meta.setAttribute('content', light ? '#f4f5f7' : '#0a0d12');
+        try { if (light) localStorage.setItem('theme', 'light'); else localStorage.removeItem('theme'); } catch (e) {}
+        show();
+      });
+    })();
+  </script>
 </body>
 </html>
