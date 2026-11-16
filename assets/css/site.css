@@ -984,7 +984,8 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
 
 .cap-card .cap-media img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-.cap-card .board-stack { height: 100%; width: auto; }
+/* the board fills the frame's inner area instead of setting its height, so both image frames stay 16:10 */
+.cap-card .board-stack { position: absolute; inset: 20px; width: auto; height: auto; aspect-ratio: auto; }
 
 .cap-body { display: flex; flex: 1; flex-direction: column; padding: 28px 32px 32px; }
 
@@ -1132,4 +1133,21 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
 @media (max-width: 960px) {
   .theme-toggle { order: 1; margin-left: auto; }
   .site-nav { order: 2; width: 100%; margin-left: 0; }
+}
+
+/* capabilities overview: both cards share one row grid, so image, label, heading, text, list, key figure and
+   button line up across the cards whatever their text length (subgrid; without it the cards just stretch) */
+@supports (grid-template-rows: subgrid) {
+  .cap-grid { row-gap: 0; }
+  .cap-card { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 0; }
+  .cap-body { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; align-items: start; }
+  .cap-body .trail { margin-bottom: 0; }
+  .cap-figure { align-self: start; margin-top: 24px; }
+  .cap-body .button { align-self: end; justify-self: start; margin-top: 28px; }
+}
+
+@media (max-width: 960px) {
+  @supports (grid-template-rows: subgrid) {
+    .cap-grid { row-gap: 24px; }
+  }
 }
