@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0d12" />
+  <script>
+    /* Dark is the default; light only when the visitor chose it with the header toggle. */
+    try { if (localStorage.getItem('theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f5f7'); } } catch (e) {}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/images/logo/spdm-tech-favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/spdm-tech-favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/logo/spdm-tech-icon-180.png">
+  <link href="/assets/css/site.css" rel="stylesheet">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Model Order Reduction &amp; Surrogate Models | SPDM Technologies</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Model Order Reduction &amp; Surrogate Models" />
+<meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From hours of FEM to milliseconds. A checked finite-element model condensed into a compact one that answers any load profile, with every number checked." />
+<meta name="twitter:description" property="og:description" content="From hours of FEM to milliseconds. A checked finite-element model condensed into a compact one that answers any load profile, with every number checked." />
+<link rel="canonical" href="https://www.spdm-tech.de/model-order-reduction/" />
+<meta property="og:url" content="https://www.spdm-tech.de/model-order-reduction/" />
+<meta property="og:site_name" content="SPDM Technologies" />
+<meta property="og:image" content="https://www.spdm-tech.de/images/mor/mor-promo-poster.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://www.spdm-tech.de/images/mor/mor-promo-poster.jpg" />
+<meta name="twitter:title" content="Model Order Reduction &amp; Surrogate Models" />
+<meta name="twitter:site" content="@krae_dan" />
+<meta name="twitter:creator" content="@krae_dan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"From hours of FEM to milliseconds. A checked finite-element model condensed into a compact one that answers any load profile, with every number checked.","headline":"Model Order Reduction \u0026amp; Surrogate Models","image":"https://www.spdm-tech.de/images/mor/mor-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/model-order-reduction/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand lockup" href="/" aria-label="SPDM Tech, home"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+<span class="word"><b>SPDM</b> <i>Tech</i></span></a>
+      <nav class="site-nav" aria-label="Main">
+        
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/capabilities/" aria-current="true">Capabilities</a></li>
+          
+          <li><a href="/team/">Team</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/contact/">Contact</a></li>
+          
+          <li><a href="/impressum/">Impressum</a></li>
+          
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Light mode" title="Switch between dark and light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+
+
+
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Capability · Model order reduction</p>
+      <h1>From hours of FEM to milliseconds.</h1>
+      <p class="lead">We condense a checked finite-element model into a compact one that gives the same answer for any load profile, in milliseconds. Fast enough for design studies, system simulation and the control unit itself.</p>
+      <a class="button" href="/contact/">Talk to us</a>
+    </div>
+    <figure class="mor-matrices">
+      <div class="mor-matrix-pair">
+        <div class="mor-matrix">
+          <img src="/images/mor/mor-matrix-full-480.webp" srcset="/images/mor/mor-matrix-full-480.webp 480w" sizes="(max-width: 960px) 60vw, 380px" alt="Sparsity pattern of the full conductivity matrix K" width="560" height="560" decoding="async">
+
+          <span class="mono">K: 334&#8239;889 × 334&#8239;889</span>
+        </div>
+        <span class="mor-arrow" aria-hidden="true">→</span>
+        <div class="mor-matrix is-small">
+          <img src="/images/mor/mor-matrix-reduced.png" alt="The reduced matrix, 21 by 21" width="380" height="380">
+          <span class="mono">K<sub>r</sub>: 21 × 21</span>
+        </div>
+      </div>
+      <figcaption>The same circuit board, before and after the reduction: 7.2 million nonzero entries become a 21 × 21 matrix.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block key-figures-block">
+  <div class="wrap">
+    <ul class="credentials">
+      <li><strong>334&#8239;889 → 21</strong><span>Unknowns: the full thermal model of the board and its reduced model</span></li>
+      <li><strong>2&nbsp;h&nbsp;05&nbsp;min</strong><span>CalculiX for one heat-up, 1 ms to 350 s. The reduced model: 1.3 ms</span></li>
+      <li><strong>0.003&nbsp;K</strong><span>Largest difference to CalculiX, anywhere on the board, at any time</span></li>
+      <li><strong>0</strong><span>Training runs: the reduced model comes straight from the finite-element matrices</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The result</p>
+    <h2 class="title">The reduced model on the CalculiX curve.</h2>
+    <div class="overlay-grid mor-result">
+      <figure class="mor-chart-figure">
+        <svg class="heat-curve mor-chart" id="mor-heatup" viewBox="0 0 700 380" role="img" aria-label="Temperature rise of the hottest U1 pad over time, 1 ms to 300 s on a logarithmic axis: CalculiX and the reduced model lie on top of each other"></svg>
+        <p class="mor-legend"><span class="sw sw-both"></span>CalculiX, 334&#8239;889 unknowns <span class="sw sw-source"></span>Reduced model, 21 unknowns, computed in your browser</p>
+      </figure>
+      <div>
+        <dl class="mor-times">
+          <dt>CalculiX</dt><dd class="mono">2 h 05 min</dd>
+          <dt>Reduced model</dt><dd class="mono is-hot">1.3 ms</dd>
+          <dt>Largest difference, anywhere on the board</dt><dd class="mono is-eng">0.003 K</dd>
+        </dl>
+        <p class="meaning small">Same 164 time steps, 1 ms to 350 s, all 334&#8239;889 nodes. The curve on the left is the hottest pad of the microcontroller, and your browser just computed it again: <span class="mono" id="mor-heatup-live">…</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="try-it">
+  <div class="wrap">
+    <p class="eyebrow">Try it</p>
+    <h2 class="title">A new load, no new simulation.</h2>
+    <p class="lead mor-lead">Set your own power profile for the microcontroller. The reduced model of the board answers right here, in your browser.</p>
+    <div class="overlay-grid mor-try">
+      <figure class="mor-chart-figure">
+        <svg class="heat-curve mor-chart" id="mor-pulse" viewBox="0 0 700 420" role="img" aria-label="Power profile and the temperature rise of the hottest U1 pad over 600 s"></svg>
+        <p class="mor-legend"><span class="sw sw-both"></span>Full system, 334&#8239;889 unknowns (41 s) <span class="sw sw-source"></span>Reduced model, 21 unknowns</p>
+      </figure>
+      <div class="mor-controls">
+        <label class="range">
+          <span>Power while on: <b class="mono" id="mor-power-v"></b></span>
+          <input type="range" id="mor-power" min="0.25" max="2" step="0.25" value="1.0">
+        </label>
+        <label class="range">
+          <span>On for: <b class="mono" id="mor-on-v"></b></span>
+          <input type="range" id="mor-on" min="5" max="120" step="5" value="30.0">
+        </label>
+        <label class="range">
+          <span>Then off for: <b class="mono" id="mor-off-v"></b></span>
+          <input type="range" id="mor-off" min="0" max="120" step="5" value="30.0">
+        </label>
+        <div class="presets">
+          <button class="tab" type="button" id="mor-reset" aria-pressed="true">Checked case: 1 W, 30 s on, 30 s off</button>
+        </div>
+        <dl class="heat-values mono mor-values">
+          <dt>Peak</dt><dd id="mor-peak"></dd>
+          <dt>At 600 s</dt><dd id="mor-end"></dd>
+          <dt>Computed in</dt><dd id="mor-ms"></dd>
+        </dl>
+        <p class="meaning small" id="mor-check"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2 class="title">Four steps, each one a script you can rerun.</h2>
+    <ol class="steps">
+      <li>
+        <img src="/images/mor/mor-mesh-800.webp" srcset="/images/mor/mor-mesh-480.webp 480w, /images/mor/mor-mesh-800.webp 800w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="960" height="960" loading="lazy" decoding="async">
+
+        <p class="label">1 · Full model</p>
+        <h3>334&#8239;889 unknowns</h3>
+        <p>The checked thermal model of the board, built from its <a class="team-link" href="/pcb-thermal/">Gerber files</a>: layered elements, connected everywhere.</p>
+      </li>
+      <li>
+        <img src="/images/mor/mor-matrix-full-480.webp" srcset="/images/mor/mor-matrix-full-480.webp 480w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="560" height="560" loading="lazy" decoding="async">
+
+        <p class="label">2 · Matrices</p>
+        <h3>K and C from CalculiX</h3>
+        <p>Conductivity, heat capacity and the load, exported by the solver. They reproduce its own result to 5·10⁻⁵&nbsp;K.</p>
+      </li>
+      <li>
+        <img src="/images/mor/mor-matrix-reduced.png" alt="" width="380" height="380" loading="lazy" decoding="async">
+        <p class="label">3 · Reduction</p>
+        <h3>21 vectors, 7 time scales</h3>
+        <p>A Krylov projection captures the response from 1 ms to 1000 s. No fitting, no training data.</p>
+      </li>
+      <li>
+        <img src="/images/mor/mor-pulse-chart-800.webp" srcset="/images/mor/mor-pulse-chart-480.webp 480w, /images/mor/mor-pulse-chart-800.webp 800w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1020" height="720" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">4 · Check</p>
+        <h3>Against the full system</h3>
+        <p>The heat-up and a new pulsed load, compared node by node with the full model.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap evidence-grid">
+    <div>
+      <p class="eyebrow">The evidence</p>
+      <h2 class="title">Every number comes with its check.</h2>
+      <p class="lead">A reduced model is only useful if it is as trustworthy as the model it replaces. These checks are part of every reduction.</p>
+      <table class="mor-sizes">
+        <caption class="label">How many unknowns are enough? Largest difference, whole board</caption>
+        <thead><tr><th>Reduced model</th><th>Heat-up</th><th>30 s pulses</th></tr></thead>
+        <tbody>
+          <tr><td>PRIMA, 10 unknowns</td><td class="mono">1.77&nbsp;K</td><td class="mono">0.741&nbsp;K</td></tr>
+          <tr><td>PRIMA, 20 unknowns</td><td class="mono">0.942&nbsp;K</td><td class="mono">0.057&nbsp;K</td></tr>
+          <tr><td>PRIMA, 40 unknowns</td><td class="mono">0.56&nbsp;K</td><td class="mono">&lt;&nbsp;0.001&nbsp;K</td></tr>
+          <tr><td>Rational Krylov, 14 unknowns</td><td class="mono">0.041&nbsp;K</td><td class="mono">0.065&nbsp;K</td></tr>
+          <tr class="is-pick"><td>Rational Krylov, 21 unknowns</td><td class="mono">0.003&nbsp;K</td><td class="mono">0.002&nbsp;K</td></tr>
+          <tr><td>Rational Krylov, 33 unknowns</td><td class="mono">&lt;&nbsp;0.001&nbsp;K</td><td class="mono">&lt;&nbsp;0.001&nbsp;K</td></tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <article class="dossier">
+      <div class="dossier-head mono"><span>Decision dossier</span><span>Arduino Nano IO Shield</span></div>
+      <ul class="evidence-list">
+        <li><span>Matrices from CalculiX</span><strong class="mono">reproduce its field to 5·10⁻⁵ K</strong></li>
+        <li><span>Size</span><strong class="mono">334&#8239;889 → 21 unknowns</strong></li>
+        <li><span>Heat-up, 1 ms to 350 s</span><strong class="mono">0.003 K, whole board</strong></li>
+        <li><span>New load: 30 s pulses</span><strong class="mono">0.002 K against the full system</strong></li>
+        <li><span>Stable and passive</span><strong class="mono">symmetric positive definite</strong></li>
+        <li><span>Full system solved directly, 600 s of pulses</span><strong class="mono">41 s, the reduced model 4.5 ms</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Beyond this board</p>
+    <h2 class="title">Reduced where the physics allows, learned where it does not.</h2>
+    <div class="two three">
+      <article class="field is-pcb">
+        <p class="eyebrow">Model order reduction</p>
+        <h3>Exact projection of the finite-element model.</h3>
+        <p class="field-text">For linear physics: heat transfer, structural dynamics, vibration. Stable by construction and checked against the full model.</p>
+        <ul class="trail">
+          <li>Shown on this page: 334&#8239;889 → 21 unknowns</li>
+          <li>Any load over time, without a new simulation</li>
+          <li>Rebuilt in minutes when the design changes</li>
+        </ul>
+      </article>
+      <article class="field is-data">
+        <p class="eyebrow">Surrogate models</p>
+        <h3>When the parameters change, or the solver is a black box.</h3>
+        <p class="field-text">A planned set of simulations, then a response surface, Kriging or neural network, each reported with its cross-validated prediction quality.</p>
+        <ul class="trail">
+          <li>Geometry, material and cooling as parameters</li>
+          <li>Sensitivities: which inputs really matter</li>
+          <li>Built on years of work with optiSLang (optiSLang Award 2019)</li>
+        </ul>
+      </article>
+      <article class="field is-eng">
+        <p class="eyebrow">Where they pay off</p>
+        <h3>Wherever one answer is not enough.</h3>
+        <p class="field-text">Thousands of evaluations instead of one: in the design loop, the system model and the product itself.</p>
+        <ul class="trail">
+          <li>Design studies, optimisation and robustness</li>
+          <li>System simulation and digital twins</li>
+          <li>Derating and monitoring in control units</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">Shown with results on this page: the model order reduction of the circuit board. Surrogate models for parameter studies are not shown here yet.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The whole story</p>
+    <h2 class="title">From hours of FEM to milliseconds, in 71 seconds.</h2>
+    <video class="promo-video" controls preload="none" playsinline poster="/images/mor/mor-promo-poster.jpg" width="1280" height="720">
+      <source src="/images/mor/mor-promo-720.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="note assumptions">Assumptions: the thermal model of the <a href="/pcb-thermal/">PCB thermal page</a>, linear (constant material values and convection), so the reduced model is valid for this layout, this cooling and these typical material values; change one and the reduction is rebuilt in minutes. Temperatures are rises above ambient air at the hottest of the 32 U1 pads. Times measured on the same machine: CalculiX on 8 cores for the log-spaced run with 164 time steps; the reduced model as the best of 20 runs; the full system with its matrices solved directly (one factorisation, 1 s steps). Against that direct solution the reduced model is still about 9000 times faster. Above 100 s the CalculiX curve is the run with 2.5 s time steps, and the reduced model in your browser uses the same steps.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-copy">
+      <p class="eyebrow cta-eyebrow">Pilot partners wanted</p>
+      <h2>Have a model that is too slow for the question? Let's reduce it.</h2>
+      <p class="cta-text">SPDM Tech is in its build-up phase. As one of the first pilot partners, you bring one real question, from a circuit board, a drawing or a simulation process, and get a checked answer.</p>
+    </div>
+    <a class="button" href="/contact/">Become a pilot partner</a>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  var M = {"unknowns":334889,"nonzerosM":7.2,"size":21,"timeScales":["1 ms","10 ms","0.1 s","1 s","10 s","100 s","1000 s"],"matrixCheckC":"5·10⁻⁵","heatup":{"steps":164,"ccxSeconds":7491,"ccxText":"2 h 05 min","romMs":1.3,"maxErrorC":0.003,"t":[0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.0125,0.015,0.0175,0.02,0.0225,0.025,0.0275,0.03,0.0325,0.035,0.0375,0.04,0.0425,0.045,0.0475,0.05,0.0525,0.055,0.0575,0.06,0.0625,0.065,0.0675,0.07,0.0725,0.075,0.0775,0.08,0.0825,0.085,0.0875,0.09,0.0925,0.095,0.0975,0.1,0.125,0.15,0.175,0.2,0.225,0.25,0.275,0.3,0.325,0.35,0.375,0.4,0.425,0.45,0.475,0.5,0.525,0.55,0.575,0.6,0.625,0.65,0.675,0.7,0.725,0.75,0.775,0.8,0.825,0.85,0.875,0.9,0.925,0.95,0.975,1.0,1.25,1.5,1.75,2.0,2.25,2.5,2.75,3.0,3.25,3.5,3.75,4.0,4.25,4.5,4.75,5.0,5.25,5.5,5.75,6.0,6.25,6.5,6.75,7.0,7.25,7.5,7.75,8.0,8.25,8.5,8.75,9.0,9.25,9.5,9.75,10.0,12.5,15.0,17.5,20.0,22.5,25.0,27.5,30.0,32.5,35.0,37.5,40.0,42.5,45.0,47.5,50.0,52.5,55.0,57.5,60.0,62.5,65.0,67.5,70.0,72.5,75.0,77.5,80.0,82.5,85.0,87.5,90.0,92.5,95.0,97.5,100.0,125.0,150.0,175.0,200.0,225.0,250.0,275.0,300.0],"ccx":[0.088,0.167,0.243,0.315,0.386,0.454,0.519,0.583,0.644,0.703,0.847,0.987,1.121,1.249,1.38,1.51,1.635,1.758,1.877,1.993,2.106,2.216,2.324,2.429,2.532,2.633,2.731,2.828,2.922,3.014,3.104,3.193,3.279,3.364,3.447,3.528,3.608,3.687,3.763,3.839,3.912,3.985,4.056,4.126,4.195,4.262,4.841,5.342,5.782,6.172,6.521,6.836,7.122,7.384,7.626,7.85,8.059,8.255,8.439,8.613,8.779,8.936,9.086,9.229,9.366,9.498,9.625,9.747,9.866,9.98,10.091,10.198,10.302,10.408,10.51,10.61,10.707,10.802,10.895,10.986,11.074,11.161,11.896,12.539,13.113,13.635,14.117,14.567,14.99,15.392,15.776,16.144,16.5,16.843,17.176,17.499,17.814,18.121,18.421,18.714,19.001,19.282,19.557,19.827,20.093,20.353,20.608,20.859,21.106,21.349,21.587,21.822,22.053,22.28,22.504,22.725,22.942,23.156,25.034,26.701,28.192,29.537,30.755,31.867,32.887,33.825,34.693,35.498,36.248,36.948,37.603,38.218,38.797,39.342,39.857,40.344,40.806,41.244,41.66,42.056,42.433,42.793,43.136,43.464,43.778,44.079,44.367,44.643,44.908,45.162,45.407,45.642,45.869,46.087,47.877,49.175,50.138,50.87,51.435,51.877,52.225,52.501]},"pulse":{"power":1.0,"on":30.0,"period":60.0,"end":600.0,"dt":1.0,"fullSeconds":41,"romMs":4.5,"maxErrorC":0.002,"full":[9.673,12.981,14.997,16.554,17.882,19.067,20.149,21.151,22.087,22.964,23.791,24.573,25.313,26.016,26.685,27.322,27.93,28.511,29.068,29.601,30.113,30.604,31.077,31.532,31.971,32.393,32.802,33.196,33.577,33.946,24.63,21.685,20.043,18.836,17.839,16.965,16.18,15.465,14.807,14.198,13.633,13.106,12.615,12.154,11.722,11.315,10.933,10.572,10.231,9.908,9.602,9.312,9.036,8.774,8.524,8.285,8.058,7.841,7.633,7.434,16.904,20.023,21.864,23.255,24.422,25.452,26.385,27.244,28.041,28.785,29.483,30.14,30.761,31.347,31.904,32.432,32.935,33.414,33.872,34.31,34.728,35.13,35.515,35.885,36.241,36.584,36.914,37.233,37.54,37.838,28.451,25.44,23.731,22.461,21.401,20.466,19.621,18.847,18.132,17.467,16.848,16.269,15.725,15.214,14.733,14.278,13.848,13.441,13.055,12.688,12.34,12.007,11.69,11.388,11.098,10.822,10.557,10.302,10.058,9.824,19.261,22.345,24.153,25.511,26.646,27.645,28.548,29.376,30.143,30.859,31.528,32.158,32.75,33.31,33.84,34.343,34.82,35.275,35.708,36.121,36.516,36.894,37.257,37.604,37.938,38.259,38.568,38.866,39.153,39.43,30.024,26.992,25.264,23.973,22.894,21.94,21.077,20.286,19.553,18.872,18.235,17.639,17.079,16.552,16.055,15.585,15.139,14.717,14.316,13.935,13.571,13.225,12.894,12.577,12.274,11.984,11.706,11.438,11.182,10.935,20.359,23.433,25.229,26.575,27.699,28.686,29.577,30.394,31.15,31.854,32.513,33.132,33.714,34.263,34.783,35.275,35.743,36.187,36.61,37.014,37.4,37.769,38.122,38.46,38.785,39.097,39.397,39.686,39.965,40.233,30.819,27.778,26.041,24.741,23.654,22.693,21.822,21.023,20.283,19.594,18.95,18.347,17.78,17.245,16.741,16.264,15.812,15.383,14.975,14.587,14.217,13.864,13.527,13.204,12.895,12.599,12.314,12.041,11.778,11.525,20.944,24.014,25.805,27.145,28.263,29.244,30.13,30.942,31.692,32.391,33.045,33.658,34.236,34.78,35.295,35.782,36.245,36.684,37.103,37.502,37.883,38.247,38.596,38.93,39.25,39.558,39.854,40.138,40.412,40.677,31.258,28.213,26.472,25.167,24.076,23.11,22.236,21.433,20.689,19.996,19.349,18.742,18.171,17.633,17.125,16.644,16.189,15.756,15.345,14.954,14.58,14.224,13.883,13.557,13.245,12.945,12.658,12.381,12.115,11.859,21.276,24.344,26.131,27.468,28.583,29.562,30.444,31.253,32.001,32.698,33.348,33.959,34.533,35.075,35.587,36.072,36.532,36.969,37.385,37.782,38.16,38.522,38.868,39.199,39.517,39.823,40.116,40.398,40.67,40.932,31.511,28.464,26.721,25.413,24.319,23.352,22.475,21.67,20.924,20.229,19.58,18.97,18.398,17.858,17.348,16.865,16.408,15.973,15.56,15.167,14.792,14.433,14.091,13.763,13.449,13.147,12.858,12.58,12.312,12.054,21.469,24.536,26.322,27.657,28.77,29.747,30.629,31.436,32.182,32.877,33.526,34.135,34.708,35.248,35.759,36.242,36.701,37.136,37.551,37.946,38.323,38.683,39.028,39.358,39.675,39.979,40.271,40.552,40.822,41.083,31.661,28.612,26.867,25.558,24.463,23.494,22.616,21.81,21.063,20.367,19.716,19.106,18.532,17.991,17.48,16.996,16.537,16.102,15.688,15.293,14.917,14.557,14.214,13.885,13.57,13.267,12.977,12.698,12.429,12.17,21.584,24.65,26.435,27.77,28.882,29.858,30.738,31.544,32.29,32.984,33.632,34.24,34.812,35.352,35.861,36.344,36.801,37.236,37.65,38.044,38.42,38.78,39.123,39.453,39.769,40.072,40.363,40.643,40.913,41.173,31.75,28.701,26.955,25.644,24.549,23.58,22.701,21.894,21.146,20.449,19.798,19.187,18.612,18.07,17.559,17.074,16.615,16.179,15.764,15.369,14.992,14.632,14.288,13.958,13.642,13.339,13.048,12.768,12.499,12.24,21.653,24.719,26.503,27.837,28.949,29.924,30.804,31.61,32.355,33.048,33.696,34.303,34.875,35.413,35.923,36.404,36.862,37.296,37.709,38.103,38.478,38.837,39.181,39.51,39.825,40.128,40.419,40.698,40.967,41.227,31.804,28.754,27.007,25.696,24.601,23.631,22.752,21.944,21.196,20.499,19.847,19.236,18.66,18.118,17.606,17.121,16.662,16.225,15.81,15.414,15.037,14.677,14.332,14.002,13.686,13.383,13.091,12.811,12.541,12.282,21.695,24.76,26.544,27.878,28.989,29.964,30.843,31.649,32.394,33.086,33.734,34.341,34.912,35.451,35.96,36.441,36.898,37.332,37.745,38.138,38.514,38.872,39.215,39.544,39.859,40.162,40.452,40.731,41.0,41.26,31.836,28.786,27.039,25.728,24.632,23.662,22.783,21.974,21.226,20.529,19.877,19.265,18.69,18.147,17.635,17.15,16.69,16.253,15.838,15.442,15.064,14.704,14.359,14.029,13.712,13.409,13.117,12.837,12.567,12.307],"rom":[9.673,12.981,14.997,16.554,17.882,19.067,20.149,21.151,22.087,22.964,23.791,24.573,25.313,26.016,26.685,27.322,27.93,28.511,29.068,29.601,30.113,30.604,31.077,31.532,31.971,32.394,32.802,33.196,33.577,33.946,24.63,21.685,20.043,18.836,17.839,16.965,16.18,15.465,14.807,14.198,13.633,13.106,12.615,12.154,11.722,11.315,10.933,10.572,10.231,9.908,9.602,9.312,9.036,8.773,8.524,8.285,8.058,7.841,7.633,7.434,16.904,20.022,21.864,23.255,24.422,25.452,26.385,27.244,28.041,28.785,29.483,30.14,30.761,31.347,31.904,32.432,32.935,33.415,33.872,34.31,34.729,35.13,35.515,35.886,36.242,36.584,36.915,37.233,37.541,37.838,28.452,25.44,23.731,22.461,21.401,20.466,19.621,18.847,18.132,17.468,16.848,16.269,15.725,15.214,14.733,14.278,13.848,13.441,13.055,12.688,12.339,12.007,11.69,11.387,11.098,10.821,10.556,10.302,10.058,9.824,19.26,22.345,24.153,25.511,26.646,27.645,28.548,29.376,30.143,30.859,31.528,32.158,32.75,33.31,33.84,34.343,34.82,35.275,35.708,36.121,36.516,36.895,37.257,37.605,37.939,38.26,38.568,38.866,39.153,39.43,30.024,26.992,25.264,23.973,22.894,21.94,21.077,20.286,19.553,18.872,18.235,17.639,17.079,16.552,16.055,15.585,15.139,14.717,14.316,13.935,13.571,13.225,12.894,12.577,12.274,11.984,11.705,11.438,11.181,10.934,20.359,23.433,25.229,26.575,27.699,28.686,29.577,30.394,31.15,31.854,32.513,33.132,33.714,34.263,34.783,35.275,35.743,36.187,36.611,37.014,37.4,37.769,38.122,38.461,38.785,39.098,39.398,39.687,39.965,40.233,30.819,27.779,26.042,24.741,23.654,22.693,21.822,21.023,20.283,19.594,18.95,18.347,17.78,17.245,16.741,16.264,15.812,15.383,14.975,14.587,14.217,13.864,13.527,13.204,12.895,12.598,12.314,12.041,11.778,11.525,20.944,24.014,25.805,27.145,28.263,29.244,30.13,30.942,31.693,32.392,33.045,33.658,34.236,34.78,35.295,35.782,36.245,36.685,37.103,37.502,37.883,38.247,38.596,38.93,39.25,39.558,39.854,40.139,40.413,40.677,31.258,28.213,26.472,25.167,24.076,23.111,22.236,21.433,20.689,19.996,19.349,18.742,18.171,17.633,17.125,16.644,16.189,15.756,15.345,14.954,14.58,14.224,13.883,13.557,13.245,12.945,12.657,12.381,12.115,11.859,21.276,24.343,26.131,27.468,28.583,29.562,30.444,31.253,32.001,32.698,33.348,33.959,34.534,35.075,35.587,36.072,36.532,36.969,37.385,37.782,38.16,38.522,38.868,39.2,39.518,39.823,40.116,40.399,40.67,40.932,31.512,28.464,26.721,25.413,24.319,23.352,22.475,21.67,20.924,20.229,19.58,18.97,18.398,17.858,17.348,16.865,16.408,15.973,15.56,15.167,14.791,14.433,14.091,13.763,13.449,13.147,12.858,12.58,12.312,12.054,21.469,24.536,26.322,27.657,28.77,29.747,30.629,31.436,32.182,32.877,33.526,34.135,34.708,35.248,35.759,36.242,36.701,37.136,37.551,37.946,38.323,38.684,39.028,39.358,39.675,39.979,40.271,40.552,40.822,41.083,31.661,28.612,26.867,25.558,24.463,23.494,22.616,21.81,21.063,20.367,19.716,19.106,18.532,17.991,17.48,16.996,16.537,16.102,15.687,15.293,14.917,14.557,14.214,13.885,13.57,13.267,12.977,12.697,12.429,12.17,21.584,24.65,26.435,27.77,28.882,29.858,30.738,31.544,32.29,32.984,33.632,34.24,34.812,35.352,35.861,36.344,36.801,37.236,37.65,38.044,38.42,38.78,39.124,39.453,39.769,40.072,40.363,40.644,40.913,41.173,31.75,28.701,26.955,25.644,24.549,23.58,22.701,21.894,21.146,20.449,19.798,19.187,18.612,18.07,17.559,17.074,16.615,16.179,15.764,15.369,14.992,14.632,14.287,13.958,13.642,13.339,13.048,12.768,12.499,12.24,21.653,24.719,26.503,27.837,28.949,29.924,30.804,31.61,32.355,33.048,33.696,34.303,34.875,35.413,35.923,36.405,36.862,37.296,37.709,38.103,38.479,38.838,39.181,39.51,39.825,40.128,40.419,40.699,40.968,41.227,31.804,28.754,27.008,25.697,24.601,23.631,22.752,21.944,21.196,20.499,19.847,19.236,18.66,18.118,17.606,17.121,16.662,16.225,15.81,15.414,15.037,14.677,14.332,14.002,13.686,13.382,13.091,12.811,12.541,12.282,21.695,24.76,26.544,27.878,28.989,29.964,30.843,31.649,32.394,33.086,33.734,34.341,34.912,35.451,35.96,36.441,36.898,37.332,37.745,38.139,38.514,38.873,39.216,39.544,39.859,40.162,40.452,40.732,41.001,41.26,31.836,28.786,27.039,25.728,24.632,23.662,22.783,21.975,21.226,20.529,19.877,19.265,18.69,18.147,17.635,17.15,16.69,16.253,15.838,15.442,15.064,14.704,14.359,14.029,13.712,13.409,13.117,12.837,12.567,12.307]},"sizes":[{"name":"PRIMA 10","size":10,"heatupC":1.7697446656613636,"pulseC":0.7406035639434294},{"name":"PRIMA 20","size":20,"heatupC":0.9415105402222629,"pulseC":0.0574164107425256},{"name":"PRIMA 40","size":40,"heatupC":0.5595799614355416,"pulseC":0.00029962890551793464},{"name":"rational 14","size":14,"heatupC":0.040990311238539245,"pulseC":0.06510305605831235},{"name":"rational 21","size":21,"heatupC":0.002877374478258865,"pulseC":0.0018638249268652096},{"name":"rational 33","size":33,"heatupC":0.0001045936773879097,"pulseC":1.171766488078374e-05}]};
+  var ns = 'http://www.w3.org/2000/svg';
+
+  // --- the reduced model: Cr dx/dt + Kr x = br P(t), hottest pad = max(Vpad x); implicit Euler ---
+  function chol(A) {
+    var n = A.length, L = A.map(function (r) { return r.map(function () { return 0; }); });
+    for (var i = 0; i < n; i++) for (var j = 0; j <= i; j++) {
+      var s = A[i][j];
+      for (var k = 0; k < j; k++) s -= L[i][k] * L[j][k];
+      L[i][j] = i === j ? Math.sqrt(s) : s / L[j][j];
+    }
+    return L;
+  }
+  function cholSolve(L, b) {
+    var n = L.length, y = new Array(n), x = new Array(n), i, k, s;
+    for (i = 0; i < n; i++) { s = b[i]; for (k = 0; k < i; k++) s -= L[i][k] * y[k]; y[i] = s / L[i][i]; }
+    for (i = n - 1; i >= 0; i--) { s = y[i]; for (k = i + 1; k < n; k++) s -= L[k][i] * x[k]; x[i] = s / L[i][i]; }
+    return x;
+  }
+  function simulate(rom, steps, power) {
+    var n = rom.br.length, x = [], cache = {}, out = [], i;
+    for (i = 0; i < n; i++) x.push(0);
+    steps.forEach(function (st) {
+      var t = st[0], dt = st[1];
+      if (!cache[dt]) cache[dt] = chol(rom.Cr.map(function (r, i) { return r.map(function (c, j) { return c / dt + rom.Kr[i][j]; }); }));
+      var p = power(t);
+      var rhs = rom.Cr.map(function (r, i) { var s = 0; for (var j = 0; j < n; j++) s += r[j] * x[j]; return s / dt + rom.br[i] * p; });
+      x = cholSolve(cache[dt], rhs);
+      var mx = -Infinity;
+      rom.Vpad.forEach(function (v) { var s = 0; for (var j = 0; j < n; j++) s += v[j] * x[j]; if (s > mx) mx = s; });
+      out.push(mx);
+    });
+    return out;
+  }
+
+  // --- charts ---
+  function chart(svg, box) {
+    var api = {
+      el: function (name, attrs, text) {
+        var n = document.createElementNS(ns, name);
+        for (var a in attrs) n.setAttribute(a, attrs[a]);
+        if (text) n.textContent = text;
+        svg.appendChild(n);
+        return n;
+      }
+    };
+    return api;
+  }
+  function line(c, xs, ys, px, py, cls) {
+    var pts = [];
+    for (var i = 0; i < xs.length; i++) if (ys[i] !== null) pts.push(px(xs[i]).toFixed(1) + ',' + py(ys[i]).toFixed(1));
+    return c.el('polyline', { points: pts.join(' '), class: cls });
+  }
+
+  // heat-up, log time axis
+  var H = M.heatup, hsvg = document.getElementById('mor-heatup'), hc = chart(hsvg);
+  var X0 = 56, X1 = 684, Y0 = 336, Y1 = 14, TMIN = 0.001, TMAX = 300, KMAX = 60;
+  function hx(t) { return X0 + Math.log(t / TMIN) / Math.log(TMAX / TMIN) * (X1 - X0); }
+  function hy(k) { return Y0 - k / KMAX * (Y0 - Y1); }
+  [0, 20, 40, 60].forEach(function (k) {
+    hc.el('line', { x1: X0, x2: X1, y1: hy(k), y2: hy(k), class: 'grid' });
+    hc.el('text', { x: X0 - 10, y: hy(k) + 4, 'text-anchor': 'end' }, k + ' K');
+  });
+  [[0.001, '1 ms'], [0.01, '0.01'], [0.1, '0.1'], [1, '1'], [10, '10'], [100, '100 s']].forEach(function (p) {
+    hc.el('text', { x: hx(p[0]), y: Y0 + 24, 'text-anchor': 'middle' }, p[1]);
+  });
+  line(hc, H.t, H.ccx, hx, hy, 'ref');
+  var romLine = null;
+
+  // pulses, linear time axis, power strip on top
+  var P = M.pulse, psvg = document.getElementById('mor-pulse'), pc = chart(psvg);
+  var PX0 = 56, PX1 = 684, PY0 = 376, PY1 = 92, PK = 100, SY0 = 60, SY1 = 14;
+  var nSteps = Math.round(P.end / P.dt), PT = [];
+  for (var i = 1; i <= nSteps; i++) PT.push(Math.round(i * P.dt * 1e9) / 1e9);
+  function px(t) { return PX0 + t / P.end * (PX1 - PX0); }
+  var kmax = 50;
+  function py(k) { return PY0 - k / kmax * (PY0 - PY1); }
+  var grid = [];
+  var powerPath = pc.el('path', { class: 'power' });
+  pc.el('text', { x: PX0 - 10, y: SY0, 'text-anchor': 'end' }, 'power');
+  [0, 100, 200, 300, 400, 500, 600].forEach(function (t) { pc.el('text', { x: px(t), y: PY0 + 24, 'text-anchor': 'middle' }, t === 600 ? '600 s' : String(t)); });
+  var refLine = null, pulseLine = null;
+
+  var rom = null;
+  var power = document.getElementById('mor-power'), on = document.getElementById('mor-on'), off = document.getElementById('mor-off');
+  var reset = document.getElementById('mor-reset');
+  function fmtW(v) { return (+v).toFixed(2).replace(/0$/, '') + ' W'; }
+  function isChecked() { return +power.value === P.power && +on.value === P.on && +off.value === P.period - P.on; }
+
+  function runPulse() {
+    var W = +power.value, ton = +on.value, toff = +off.value, period = ton + toff;
+    document.getElementById('mor-power-v').textContent = fmtW(W);
+    document.getElementById('mor-on-v').textContent = ton + ' s';
+    document.getElementById('mor-off-v').textContent = toff ? toff + ' s' : '0 s (constant power)';
+    var prof = function (t) { return toff === 0 || ((t - 1e-9) % period) < ton ? W : 0; };
+    reset.setAttribute('aria-pressed', isChecked() ? 'true' : 'false');
+    // power strip
+    var d = 'M' + px(0) + ',' + SY0;
+    PT.forEach(function (t) { var y = prof(t) ? SY0 - (SY0 - SY1) * prof(t) / 2 : SY0; d += ' L' + px(t - P.dt).toFixed(1) + ',' + y.toFixed(1) + ' L' + px(t).toFixed(1) + ',' + y.toFixed(1); });
+    powerPath.setAttribute('d', d + ' L' + px(P.end) + ',' + SY0 + ' Z');
+    if (!rom) return;
+    var t0 = performance.now();
+    var temps = simulate(rom, PT.map(function (t) { return [t, P.dt]; }), prof);
+    var ms = performance.now() - t0;
+    var peak = Math.max.apply(null, temps);
+    // y axis: 0 to 50 K in 10 K steps (the checked case), above that in 20 K steps
+    var stepK = peak > 50 ? 20 : 10;
+    var top = Math.max(50, Math.ceil(peak / stepK) * stepK);
+    if (top !== kmax || !grid.length) {
+      kmax = top;
+      grid.forEach(function (g) { g.remove(); }); grid = [];
+      for (var k = 0; k <= kmax; k += stepK) {
+        grid.push(pc.el('line', { x1: PX0, x2: PX1, y1: py(k), y2: py(k), class: 'grid' }));
+        grid.push(pc.el('text', { x: PX0 - 10, y: py(k) + 4, 'text-anchor': 'end' }, k + ' K'));
+      }
+      grid.forEach(function (g) { psvg.insertBefore(g, psvg.firstChild); });
+    }
+    if (refLine) refLine.remove();
+    refLine = isChecked() ? line(pc, PT, P.full, px, py, 'ref') : null;
+    if (pulseLine) pulseLine.remove();
+    pulseLine = line(pc, PT, temps, px, py, 'curve');
+    document.getElementById('mor-peak').textContent = '+' + peak.toFixed(1) + ' K';
+    document.getElementById('mor-end').textContent = '+' + temps[temps.length - 1].toFixed(1) + ' K';
+    document.getElementById('mor-ms').textContent = ms.toFixed(1) + ' ms, ' + PT.length + ' time steps';
+    var check = document.getElementById('mor-check');
+    if (isChecked()) {
+      var dev = 0;
+      temps.forEach(function (v, i) { dev = Math.max(dev, Math.abs(v - P.full[i])); });
+      check.textContent = 'The checked case: the grey curve is the full system with all ' + String(M.unknowns).replace(/\B(?=(\d{3})+$)/g, '\u202f') + ' unknowns, solved in ' + P.fullSeconds + ' s. Largest difference on this curve: ' + dev.toFixed(3) + ' K.';
+    } else {
+      check.textContent = 'There is no full-system run for this profile: the reduced model was checked on the heat-up and on 1 W pulses, and the model is linear, so twice the power gives twice the rise.';
+    }
+  }
+
+  function runHeatup() {
+    // the reference's time steps: the log-spaced run up to 100 s, then 2.5 s steps (the run with halved steps)
+    var steps = [], at = {};
+    H.t.forEach(function (t, i) { if (t <= 100 + 1e-9) steps.push([t, i ? Math.round((t - H.t[i - 1]) * 1e9) / 1e9 : t]); });
+    for (var t = 102.5; t <= 300 + 1e-9; t += 2.5) steps.push([Math.round(t * 1e4) / 1e4, 2.5]);
+    var t0 = performance.now();
+    var temps = simulate(rom, steps, function () { return 1; });
+    var ms = performance.now() - t0;
+    steps.forEach(function (s, i) { at[s[0]] = temps[i]; });
+    var ys = H.t.map(function (t) { return at[t]; });
+    if (romLine) romLine.remove();
+    romLine = line(hc, H.t, ys, hx, hy, 'curve');
+    var dev = 0;
+    ys.forEach(function (v, i) { if (H.ccx[i] !== null) dev = Math.max(dev, Math.abs(v - H.ccx[i])); });
+    document.getElementById('mor-heatup-live').textContent = ms.toFixed(1) + ' ms on the curve’s own time steps, at most ' + dev.toFixed(2) + ' K from CalculiX.';
+  }
+
+  [power, on, off].forEach(function (s) { s.addEventListener('input', runPulse); });
+  reset.addEventListener('click', function () { power.value = P.power; on.value = P.on; off.value = P.period - P.on; runPulse(); });
+  runPulse();
+  if (!window.fetch) { document.getElementById('mor-heatup-live').textContent = '(your browser cannot load the reduced model)'; return; }
+  fetch('/assets/data/mor-rom.json').then(function (r) { return r.json(); }).then(function (d) {
+    rom = d; runHeatup(); runPulse();
+  }).catch(function () {
+    document.getElementById('mor-heatup-live').textContent = '(the reduced model could not be loaded)';
+  });
+})();
+</script>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span class="foot-brand"><svg class="foot-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
+      <ul>
+        
+        <li><a href="https://github.com/DanielKraetschmer" rel="noopener">GitHub</a></li>
+        
+        <li><a href="https://x.com/krae_dan" rel="noopener">X</a></li>
+        
+        <li><a href="mailto:daniel.kraetschmer@spdm-tech.de">Email</a></li>
+        
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+      <p class="foot-status">SPDM Tech is in its build-up phase. The results shown come from our own demonstration parts and public data. <a href="/about/#where-we-are">Where we are</a></p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.querySelector('.theme-toggle'), meta = document.querySelector('meta[name="theme-color"]');
+      if (!btn) return;
+      function show() { btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false'); }
+      show();
+      btn.addEventListener('click', function () {
+        var light = root.getAttribute('data-theme') !== 'light';
+        if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+        meta.setAttribute('content', light ? '#f4f5f7' : '#0a0d12');
+        try { if (light) localStorage.setItem('theme', 'light'); else localStorage.removeItem('theme'); } catch (e) {}
+        show();
+      });
+    })();
+  </script>
+</body>
+</html>

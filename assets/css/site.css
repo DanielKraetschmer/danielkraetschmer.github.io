@@ -37,7 +37,7 @@
 /* Renders, videos and the knowledge graph were made on the dark background, so in light mode they stay
    dark "screens": every token is reset to the dark values inside these frames. */
 :root[data-theme="light"] :is(.drawing-frame, .dossier-main img, .dossier-board, .panel img, .compare,
-  .steps img, .heat-boards img, .cap-media, .promo-video, .model-render, .panel-board) {
+  .steps img, .heat-boards img, .cap-media, .promo-video, .model-render, .panel-board, .mor-matrix img) {
   color-scheme: dark;
   --bg: #0a0d12;
   --surface: #11161e;
@@ -978,6 +978,12 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
 
 .cap-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 44px; }
 
+@media (min-width: 1100px) {
+  .cap-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cap-body { padding: 26px 26px 28px; }
+  .cap-body h2 { font-size: 26px; }
+}
+
 .cap-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
 
 .cap-card .cap-media { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; padding: 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
@@ -1150,4 +1156,90 @@ h2.title { max-width: 820px; margin-top: 10px; font-size: clamp(30px, 3.8vw, 46p
   @supports (grid-template-rows: subgrid) {
     .cap-grid { row-gap: 24px; }
   }
+}
+
+/* ---------------------------------------------------------------- model order reduction */
+
+.is-mor { --accent: var(--eng); }
+
+.is-mor .eyebrow { color: var(--eng); }
+
+/* square matrices: sized by width so they always fit the 16:10 frame */
+.is-mor .cap-pair img:first-child { width: 50%; }
+
+.cap-pair img.cap-small { width: 30%; }
+
+.mor-matrices { margin: 0; }
+
+.mor-matrix-pair { display: flex; align-items: center; gap: 20px; }
+
+.mor-matrix { flex: 6; display: flex; flex-direction: column; gap: 10px; }
+
+.mor-matrix.is-small { flex: 3.4; }
+
+.mor-matrix img { width: 100%; height: auto; border-radius: 6px; background: var(--bg); image-rendering: auto; }
+
+.mor-matrix span { color: var(--muted); font-size: 14px; }
+
+.mor-arrow { flex: none; color: var(--hot); font-size: 34px; line-height: 1; }
+
+.mor-matrices figcaption { margin-top: 16px; color: var(--muted); font-size: 15px; }
+
+.mor-chart-figure { margin: 0; }
+
+.mor-chart { margin-top: 0; }
+
+.mor-chart .ref { fill: none; stroke: var(--muted); stroke-width: 8; stroke-opacity: 0.6; stroke-linejoin: round; }
+
+.mor-chart .curve { stroke-width: 2.2; stroke-linejoin: round; }
+
+.mor-chart .power { fill: var(--hot); fill-opacity: 0.75; stroke: none; }
+
+.mor-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+.mor-legend .sw { margin-left: 8px; }
+
+.mor-legend .sw:first-child { margin-left: 0; }
+
+.mor-legend .sw-both { height: 6px; background: var(--muted); opacity: 0.6; }
+
+.mor-times dt { margin-top: 18px; color: var(--soft); font-size: 18px; }
+
+.mor-times dt:first-child { margin-top: 0; }
+
+.mor-times dd { margin-top: 4px; font-size: clamp(30px, 3.4vw, 42px); font-weight: 700; line-height: 1.1; }
+
+.mor-times .is-hot { color: var(--hot); }
+
+.mor-times .is-eng { color: var(--eng); }
+
+.mor-result .meaning.small { margin-top: 24px; }
+
+.mor-lead { max-width: 760px; }
+
+.mor-try { align-items: start; }
+
+.mor-controls .range { margin-top: 0; margin-bottom: 18px; }
+
+.mor-controls .range b { color: var(--text); font-weight: 600; }
+
+.mor-controls .presets { margin-top: 4px; }
+
+.mor-values { margin-top: 24px; font-size: 20px; }
+
+.mor-sizes { width: 100%; margin-top: 32px; border-collapse: collapse; font-size: 15px; }
+
+.mor-sizes caption { margin-bottom: 8px; text-align: left; }
+
+.mor-sizes th, .mor-sizes td { padding: 7px 10px 7px 0; border-bottom: 1px solid var(--line); text-align: left; }
+
+.mor-sizes th { color: var(--muted); font-weight: 600; }
+
+.mor-sizes td { color: var(--soft); }
+
+.mor-sizes tr.is-pick td { color: var(--eng); font-weight: 600; }
+
+@media (max-width: 560px) {
+  .mor-matrix-pair { gap: 12px; }
+  .mor-arrow { font-size: 26px; }
 }

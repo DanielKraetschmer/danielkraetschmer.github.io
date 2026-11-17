@@ -19,8 +19,8 @@
 <meta property="og:title" content="Capabilities" />
 <meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Two ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files and from 2D drawings." />
-<meta name="twitter:description" property="og:description" content="Two ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files and from 2D drawings." />
+<meta name="description" content="Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models." />
+<meta name="twitter:description" property="og:description" content="Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models." />
 <link rel="canonical" href="https://www.spdm-tech.de/capabilities/" />
 <meta property="og:url" content="https://www.spdm-tech.de/capabilities/" />
 <meta property="og:site_name" content="SPDM Technologies" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@krae_dan" />
 <meta name="twitter:creator" content="@krae_dan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"Two ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files and from 2D drawings.","headline":"Capabilities","image":"https://www.spdm-tech.de/images/drawing/drawing-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/capabilities/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models.","headline":"Capabilities","image":"https://www.spdm-tech.de/images/drawing/drawing-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/capabilities/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -73,7 +73,7 @@
   <div class="wrap">
     <p class="eyebrow">Capabilities</p>
     <h1>Answers from the data you already have.</h1>
-    <p class="lead">No new CAD models, no waiting for a test rig. We start from manufacturing data and drawings, simulate, and hand you a result with its checks.</p>
+    <p class="lead">No new CAD models, no waiting for a test rig. We start from manufacturing data, drawings and existing simulation models, and hand you a result with its checks.</p>
 
     <div class="cap-grid">
       <article class="cap-card is-pcb">
@@ -117,6 +117,26 @@
           </ol>
           <p class="cap-figure"><strong>269&nbsp;MPa</strong><span>Peak stress at 8 N·m in the demo spool, mesh check +0.8 %</span></p>
           <a class="button" href="/drawing-to-design/">Explore drawing to design</a>
+        </div>
+      </article>
+
+      <article class="cap-card is-mor">
+        <a class="cap-media cap-pair" href="/model-order-reduction/" tabindex="-1" aria-hidden="true">
+          <img src="/images/mor/mor-matrix-full-480.webp" srcset="/images/mor/mor-matrix-full-480.webp 480w" sizes="(max-width: 960px) 50vw, 200px" alt="" width="560" height="560" decoding="async" />
+
+          <img src="/images/mor/mor-matrix-reduced.png" alt="" width="380" height="380" class="cap-small" />
+        </a>
+        <div class="cap-body">
+          <p class="eyebrow">Capability · Model order reduction</p>
+          <h2>From hours of FEM to milliseconds.</h2>
+          <p class="field-text">A checked finite-element model condensed into a compact one that answers any load profile instantly, with the same result.</p>
+          <ol class="trail">
+            <li>Matrices straight from the solver, no training data</li>
+            <li>Any load over time, without a new simulation</li>
+            <li>Checked node by node against the full model</li>
+          </ol>
+          <p class="cap-figure"><strong>334&#8239;889&nbsp;→&nbsp;21</strong><span>Unknowns, CalculiX 2 h 05 min, the reduced model 1.3 ms</span></p>
+          <a class="button" href="/model-order-reduction/">Explore model order reduction</a>
         </div>
       </article>
     </div>
