@@ -71,10 +71,21 @@
 
 
 
+<nav class="chapter-bar" aria-label="Chapters of Electronics thermal">
+  <div class="wrap">
+    <a class="chapter-home" href="/electronics-thermal/">Electronics thermal</a>
+    <ol>
+      <li><a href="/pcb-thermal/" aria-current="page"><span class="mono">1</span> Board model</a></li>
+      <li><a href="/model-order-reduction/"><span class="mono">2</span> Reduced model</a></li>
+      <li><a href="/component-models/"><span class="mono">3</span> Coupled components</a></li>
+    </ol>
+  </div>
+</nav>
+
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Capability · PCB thermal simulation</p>
+      <p class="eyebrow">Chapter 1 · PCB thermal simulation</p>
       <h1>From Gerber files to a thermal answer.</h1>
       <p class="lead">Send the manufacturing data your board house already has. Get the hot spots, how hot they run and how fast they heat up, each with its check. No CAD model needed.</p>
       <a class="button" href="/contact/">Talk to us</a>
@@ -241,6 +252,16 @@
 <section class="block">
   <div class="wrap">
     <p class="note assumptions">Assumptions: 1 W spread evenly over the 32 pads of U1, the chip itself not modelled. Convection h = 12 W/m²K on the top, bottom and edges. Temperatures are rises above ambient air. The heat-up starts with time steps of 1 ms. Board: Arduino Nano IO Shield, Gerber files from freegerber.com.</p>
+  </div>
+</section>
+
+<section class="block chapter-next">
+  <div class="wrap">
+    <a class="chapter-card" href="/model-order-reduction/">
+      <span class="label">Next chapter · 2 of 3</span>
+      <strong>Reduced model: From hours of FEM to milliseconds.</strong>
+      <span class="chapter-text">The board model condensed to 21 unknowns, with the same answer for any load profile.</span>
+    </a>
   </div>
 </section>
 

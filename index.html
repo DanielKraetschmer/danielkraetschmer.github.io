@@ -434,15 +434,15 @@ FLANGE_HOLE_D, FLANGE_HOLE_PCD, FLANGE_HOLES = 3.4, 30.0, 6</code></pre>
         </ol>
       </article>
       <article class="field is-pcb">
-        <p class="eyebrow">PCB thermal simulation</p>
+        <p class="eyebrow">Electronics thermal</p>
         <h3>We read the board as built.</h3>
-        <p class="field-text">Gerber and drill files become a thermal model, without anyone drawing a CAD model.</p>
+        <p class="field-text">Gerber and drill files become a thermal model, reduced to milliseconds and coupled with the components on it.</p>
         <ol class="trail">
-          <li>Copper, FR-4 and plating from the manufacturing data</li>
-          <li>Hot spots at steady state and during heat-up</li>
-          <li>Results laid over the board layout</li>
+          <li>Hot spots from the manufacturing data</li>
+          <li>Any load profile, without a new simulation</li>
+          <li>Junction and pins of the chips on the board</li>
         </ol>
-        <a class="team-link" href="/pcb-thermal/">Explore PCB thermal simulation</a>
+        <a class="team-link" href="/electronics-thermal/">Explore electronics thermal</a>
       </article>
       
       <article class="field is-drawing">

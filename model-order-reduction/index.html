@@ -73,10 +73,21 @@
 
 
 
+<nav class="chapter-bar" aria-label="Chapters of Electronics thermal">
+  <div class="wrap">
+    <a class="chapter-home" href="/electronics-thermal/">Electronics thermal</a>
+    <ol>
+      <li><a href="/pcb-thermal/"><span class="mono">1</span> Board model</a></li>
+      <li><a href="/model-order-reduction/" aria-current="page"><span class="mono">2</span> Reduced model</a></li>
+      <li><a href="/component-models/"><span class="mono">3</span> Coupled components</a></li>
+    </ol>
+  </div>
+</nav>
+
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">Capability · Model order reduction</p>
+      <p class="eyebrow">Chapter 2 · Model order reduction</p>
       <h1>From hours of FEM to milliseconds.</h1>
       <p class="lead">We condense a checked finite-element model into a compact one that gives the same answer for any load profile, in milliseconds. Fast enough for design studies, system simulation and the control unit itself.</p>
       <a class="button" href="/contact/">Talk to us</a>
@@ -291,6 +302,16 @@
 <section class="block">
   <div class="wrap">
     <p class="note assumptions">Assumptions: the thermal model of the <a href="/pcb-thermal/">PCB thermal page</a>, linear (constant material values and convection), so the reduced model is valid for this layout, this cooling and these typical material values; change one and the reduction is rebuilt in minutes. Temperatures are rises above ambient air at the hottest of the 32 U1 pads. Times measured on the same machine: CalculiX on 8 cores for the log-spaced run with 164 time steps; the reduced model as the best of 20 runs; the full system with its matrices solved directly (one factorisation, 1 s steps). Against that direct solution the reduced model is still about 9000 times faster. Above 100 s the CalculiX curve is the run with 2.5 s time steps, and the reduced model in your browser uses the same steps.</p>
+  </div>
+</section>
+
+<section class="block chapter-next">
+  <div class="wrap">
+    <a class="chapter-card" href="/component-models/">
+      <span class="label">Next chapter · 3 of 3</span>
+      <strong>Coupled components: Components as building blocks.</strong>
+      <span class="chapter-text">The chip package and the board as reduced models, coupled at their pins. Junction, pins and board in milliseconds.</span>
+    </a>
   </div>
 </section>
 

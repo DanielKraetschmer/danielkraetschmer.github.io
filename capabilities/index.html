@@ -19,8 +19,8 @@
 <meta property="og:title" content="Capabilities" />
 <meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models." />
-<meta name="twitter:description" property="og:description" content="Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models." />
+<meta name="description" content="How SPDM Tech turns the data you already have into checked engineering answers, for electronics from Gerber files to coupled component models, and for mechanical parts from 2D drawings." />
+<meta name="twitter:description" property="og:description" content="How SPDM Tech turns the data you already have into checked engineering answers, for electronics from Gerber files to coupled component models, and for mechanical parts from 2D drawings." />
 <link rel="canonical" href="https://www.spdm-tech.de/capabilities/" />
 <meta property="og:url" content="https://www.spdm-tech.de/capabilities/" />
 <meta property="og:site_name" content="SPDM Technologies" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@krae_dan" />
 <meta name="twitter:creator" content="@krae_dan" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"Three ways SPDM Tech turns the data you already have into checked engineering answers, from circuit board Gerber files, from 2D drawings and from existing simulation models.","headline":"Capabilities","image":"https://www.spdm-tech.de/images/drawing/drawing-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/capabilities/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"How SPDM Tech turns the data you already have into checked engineering answers, for electronics from Gerber files to coupled component models, and for mechanical parts from 2D drawings.","headline":"Capabilities","image":"https://www.spdm-tech.de/images/drawing/drawing-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/capabilities/"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -77,7 +77,7 @@
 
     <div class="cap-grid">
       <article class="cap-card is-pcb">
-        <a class="cap-media" href="/pcb-thermal/" tabindex="-1" aria-hidden="true">
+        <a class="cap-media" href="/electronics-thermal/" tabindex="-1" aria-hidden="true">
           <span class="board-stack">
             <img src="/images/pcb/pcb-gerber-top-800.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w" sizes="(max-width: 960px) 90vw, 400px" alt="" width="1200" height="1181" decoding="async" />
 
@@ -86,16 +86,16 @@
           </span>
         </a>
         <div class="cap-body">
-          <p class="eyebrow">Capability · PCB thermal simulation</p>
-          <h2>From Gerber files to a thermal answer.</h2>
-          <p class="field-text">The manufacturing data your board house already has becomes a thermal model. No CAD model needed.</p>
+          <p class="eyebrow">Capability · Electronics thermal</p>
+          <h2>From Gerber files to a live thermal model.</h2>
+          <p class="field-text">The board as manufactured becomes a checked thermal model, reduced to milliseconds and coupled with the components on it.</p>
           <ol class="trail">
-            <li>Copper, FR-4 and plating from the Gerber and drill files</li>
-            <li>Hot spots at steady state and during heat-up</li>
-            <li>Results laid over the board layout you know</li>
+            <li><a href="/pcb-thermal/">Board model</a>: hot spots from the Gerber and drill files</li>
+            <li><a href="/model-order-reduction/">Reduced model</a>: any load profile in milliseconds</li>
+            <li><a href="/component-models/">Coupled components</a>: junction and pins of the chip</li>
           </ol>
-          <p class="cap-figure"><strong>+53.6&nbsp;K</strong><span>Hottest pad at 1 W, 90 % reached within 132&nbsp;s</span></p>
-          <a class="button" href="/pcb-thermal/">Explore PCB thermal simulation</a>
+          <p class="cap-figure"><strong>105.0&nbsp;K/W</strong><span>Junction to air for the microcontroller on this board, in 357 unknowns</span></p>
+          <a class="button" href="/electronics-thermal/">Explore electronics thermal</a>
         </div>
       </article>
 
@@ -120,25 +120,6 @@
         </div>
       </article>
 
-      <article class="cap-card is-mor">
-        <a class="cap-media cap-pair" href="/model-order-reduction/" tabindex="-1" aria-hidden="true">
-          <img src="/images/mor/mor-matrix-full-480.webp" srcset="/images/mor/mor-matrix-full-480.webp 480w" sizes="(max-width: 960px) 50vw, 200px" alt="" width="560" height="560" decoding="async" />
-
-          <img src="/images/mor/mor-matrix-reduced.png" alt="" width="380" height="380" class="cap-small" />
-        </a>
-        <div class="cap-body">
-          <p class="eyebrow">Capability · Model order reduction</p>
-          <h2>From hours of FEM to milliseconds.</h2>
-          <p class="field-text">A checked finite-element model condensed into a compact one that answers any load profile instantly, with the same result.</p>
-          <ol class="trail">
-            <li>Matrices straight from the solver, no training data</li>
-            <li>Any load over time, without a new simulation</li>
-            <li>Checked node by node against the full model</li>
-          </ol>
-          <p class="cap-figure"><strong>334&#8239;889&nbsp;→&nbsp;21</strong><span>Unknowns, CalculiX 2 h 05 min, the reduced model 1.3 ms</span></p>
-          <a class="button" href="/model-order-reduction/">Explore model order reduction</a>
-        </div>
-      </article>
     </div>
   </div>
 </section>

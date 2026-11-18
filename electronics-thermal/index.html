@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0d12" />
+  <script>
+    /* Dark is the default; light only when the visitor chose it with the header toggle. */
+    try { if (localStorage.getItem('theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f5f7'); } } catch (e) {}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/images/logo/spdm-tech-favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/spdm-tech-favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/logo/spdm-tech-icon-180.png">
+  <link href="/assets/css/site.css" rel="stylesheet">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Electronics Thermal | SPDM Technologies</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Electronics Thermal" />
+<meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="From Gerber files to a live thermal model. A checked board model, reduced to milliseconds and coupled with the components on it, in three chapters." />
+<meta name="twitter:description" property="og:description" content="From Gerber files to a live thermal model. A checked board model, reduced to milliseconds and coupled with the components on it, in three chapters." />
+<link rel="canonical" href="https://www.spdm-tech.de/electronics-thermal/" />
+<meta property="og:url" content="https://www.spdm-tech.de/electronics-thermal/" />
+<meta property="og:site_name" content="SPDM Technologies" />
+<meta property="og:image" content="https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg" />
+<meta name="twitter:title" content="Electronics Thermal" />
+<meta name="twitter:site" content="@krae_dan" />
+<meta name="twitter:creator" content="@krae_dan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"From Gerber files to a live thermal model. A checked board model, reduced to milliseconds and coupled with the components on it, in three chapters.","headline":"Electronics Thermal","image":"https://www.spdm-tech.de/images/pcb/pcb-thermal-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/electronics-thermal/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand lockup" href="/" aria-label="SPDM Tech, home"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+<span class="word"><b>SPDM</b> <i>Tech</i></span></a>
+      <nav class="site-nav" aria-label="Main">
+        
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/capabilities/" aria-current="true">Capabilities</a></li>
+          
+          <li><a href="/team/">Team</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/contact/">Contact</a></li>
+          
+          <li><a href="/impressum/">Impressum</a></li>
+          
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Light mode" title="Switch between dark and light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+
+
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Capability · Electronics thermal</p>
+      <h1>From Gerber files to a live thermal model.</h1>
+      <p class="lead">Your board as it is manufactured, turned into a checked thermal model, reduced to milliseconds and combined with the components on it. Answers for the layout review, the load profile and the derating, each with its check.</p>
+      <a class="button" href="/contact/">Talk to us</a>
+    </div>
+    <figure class="board-figure">
+      <div class="board-stack">
+        <img src="/images/pcb/pcb-gerber-top-1200.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w, /images/pcb/pcb-gerber-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 640px" alt="Top side of the circuit board as rendered from its Gerber files" width="1200" height="1181" decoding="async">
+
+        <img src="/images/pcb/pcb-temp-top-1200.webp" srcset="/images/pcb/pcb-temp-top-480.webp 480w, /images/pcb/pcb-temp-top-800.webp 800w, /images/pcb/pcb-temp-top-1200.webp 1200w" sizes="(max-width: 960px) 100vw, 640px" alt="" width="1200" height="1181" class="board-heat" style="opacity:.55" decoding="async">
+
+      </div>
+      <figcaption>The demonstration board: temperature rise at 1 W in the microcontroller, laid over its layout</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block key-figures-block">
+  <div class="wrap">
+    <ul class="credentials">
+      <li><strong>0</strong><span>CAD models built: the geometry comes straight from the Gerber files</span></li>
+      <li><strong>+53.6&nbsp;K</strong><span>Hottest pad at 1 W, from the full board model</span></li>
+      <li><strong>1.3&nbsp;ms</strong><span>For a heat-up that takes CalculiX 2 h 05 min, with the same answer</span></li>
+      <li><strong>105.0&nbsp;K/W</strong><span>From junction to air for the microcontroller, on this board</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Three chapters</p>
+    <h2 class="title">One model, taken three steps further.</h2>
+    <ol class="el-chain">
+      <li>
+        <a class="el-media" href="/pcb-thermal/" tabindex="-1" aria-hidden="true">
+          <span class="board-stack">
+            <img src="/images/pcb/pcb-gerber-top-800.webp" srcset="/images/pcb/pcb-gerber-top-480.webp 480w, /images/pcb/pcb-gerber-top-800.webp 800w" sizes="(max-width: 960px) 90vw, 300px" alt="" width="1200" height="1181" loading="lazy" decoding="async">
+
+            <img src="/images/pcb/pcb-temp-top-800.webp" srcset="/images/pcb/pcb-temp-top-480.webp 480w, /images/pcb/pcb-temp-top-800.webp 800w" sizes="(max-width: 960px) 90vw, 300px" alt="" width="1200" height="1181" style="opacity:.55" loading="lazy" decoding="async">
+
+          </span>
+        </a>
+        <div class="el-body">
+          <p class="label">Chapter 1 · Board model</p>
+          <h3><a href="/pcb-thermal/">From Gerber files to a thermal answer.</a></h3>
+          <p>The manufacturing data your board house already has becomes a checked thermal model. No CAD model needed.</p>
+          <p class="cap-figure"><strong>+53.6&nbsp;K</strong><span>Hottest pad, 132&nbsp;s to 90&nbsp;%</span></p>
+        </div>
+      </li>
+      <li>
+        <a class="el-media el-pair" href="/model-order-reduction/" tabindex="-1" aria-hidden="true">
+          <img src="/images/mor/mor-matrix-full-480.webp" srcset="/images/mor/mor-matrix-full-480.webp 480w" sizes="(max-width: 960px) 50vw, 160px" alt="" width="560" height="560" loading="lazy" decoding="async">
+
+          <img src="/images/mor/mor-matrix-reduced.png" alt="" width="380" height="380" class="el-small" loading="lazy">
+        </a>
+        <div class="el-body">
+          <p class="label">Chapter 2 · Reduced model</p>
+          <h3><a href="/model-order-reduction/">From hours of FEM to milliseconds.</a></h3>
+          <p>The board model condensed to 21 unknowns, with the same answer for any load profile.</p>
+          <p class="cap-figure"><strong>334&#8239;889&nbsp;→&nbsp;21</strong><span>Unknowns, 0.003&nbsp;K largest difference</span></p>
+        </div>
+      </li>
+      <li>
+        <a class="el-media" href="/component-models/" tabindex="-1" aria-hidden="true">
+          <img src="/images/coupled/cm-ports-1000.webp" srcset="/images/coupled/cm-ports-480.webp 480w, /images/coupled/cm-ports-1000.webp 1000w" sizes="(max-width: 960px) 90vw, 300px" alt="" width="1000" height="840" loading="lazy" decoding="async">
+
+        </a>
+        <div class="el-body">
+          <p class="label">Chapter 3 · Coupled components</p>
+          <h3><a href="/component-models/">Components as building blocks.</a></h3>
+          <p>The chip package and the board as reduced models, coupled at their pins. Junction, pins and board in milliseconds.</p>
+          <p class="cap-figure"><strong>105.0&nbsp;K/W</strong><span>Junction to air, 357 unknowns for package and board</span></p>
+        </div>
+      </li>
+      <li class="is-next">
+        <div class="el-body">
+          <p class="label">Next · not shown yet</p>
+          <h3>Assemblies, housing, digital twin.</h3>
+          <p>More components, heat sinks and the housing as further blocks; the reduced board in the system simulation and in the product itself.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Questions it answers</p>
+    <h2 class="title">From the layout review to the derating.</h2>
+    <div class="two three">
+      <article class="field is-pcb">
+        <p class="eyebrow">Chapter 1</p>
+        <h3>Where does my board run hot, and why?</h3>
+        <p class="field-text">Hot spots at steady state and during heat-up, laid over the layout you know, with the traces and pads that carry the heat.</p>
+        <a class="team-link" href="/pcb-thermal/">See the board model</a>
+      </article>
+      <article class="field is-mor">
+        <p class="eyebrow">Chapter 2</p>
+        <h3>What happens with my real load profile?</h3>
+        <p class="field-text">Any power over time, without a new simulation: the reduced board answers in milliseconds. Try it on the page.</p>
+        <a class="team-link" href="/model-order-reduction/#try-it">Try a load profile</a>
+      </article>
+      <article class="field is-data">
+        <p class="eyebrow">Chapter 3</p>
+        <h3>How much power can this chip take on my board?</h3>
+        <p class="field-text">Junction and pin temperatures for your ambient, your limit and your duty cycle, from the package and the board together.</p>
+        <a class="team-link" href="/component-models/#try-it">Check the derating</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap evidence-grid">
+    <div>
+      <p class="eyebrow">The evidence</p>
+      <h2 class="title">Checked at every step of the chain.</h2>
+      <p class="lead">Each model is checked on its own before the next one builds on it. The details are in each chapter.</p>
+    </div>
+    <article class="dossier">
+      <div class="dossier-head mono"><span>Decision dossier</span><span>Arduino Nano IO Shield</span></div>
+      <ul class="evidence-list">
+        <li><span>1 · Energy balance of the board model</span><strong class="mono">1.00005 W of 1 W</strong></li>
+        <li><span>1 · Mesh refined at U1</span><strong class="mono">+1.6 % at the hottest pad</strong></li>
+        <li><span>2 · Matrices against CalculiX</span><strong class="mono">5·10⁻⁵ K</strong></li>
+        <li><span>2 · Reduced board, heat-up and pulses</span><strong class="mono">≤ 0.003 K, whole board</strong></li>
+        <li><span>3 · Package model against CalculiX</span><strong class="mono">K and C identical to 3·10⁻⁸</strong></li>
+        <li><span>3 · Coupled reduced models against the full ones</span><strong class="mono">≤ 0.054 K, package and board</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-copy">
+      <p class="eyebrow cta-eyebrow">Pilot partners wanted</p>
+      <h2>Have a board or a component that runs warm? Send us its data.</h2>
+      <p class="cta-text">SPDM Tech is in its build-up phase. As one of the first pilot partners, you bring one real question, from a circuit board, a drawing or a simulation process, and get a checked answer.</p>
+    </div>
+    <a class="button" href="/contact/">Become a pilot partner</a>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span class="foot-brand"><svg class="foot-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
+      <ul>
+        
+        <li><a href="https://github.com/DanielKraetschmer" rel="noopener">GitHub</a></li>
+        
+        <li><a href="https://x.com/krae_dan" rel="noopener">X</a></li>
+        
+        <li><a href="mailto:daniel.kraetschmer@spdm-tech.de">Email</a></li>
+        
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+      <p class="foot-status">SPDM Tech is in its build-up phase. The results shown come from our own demonstration parts and public data. <a href="/about/#where-we-are">Where we are</a></p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.querySelector('.theme-toggle'), meta = document.querySelector('meta[name="theme-color"]');
+      if (!btn) return;
+      function show() { btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false'); }
+      show();
+      btn.addEventListener('click', function () {
+        var light = root.getAttribute('data-theme') !== 'light';
+        if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+        meta.setAttribute('content', light ? '#f4f5f7' : '#0a0d12');
+        try { if (light) localStorage.setItem('theme', 'light'); else localStorage.removeItem('theme'); } catch (e) {}
+        show();
+      });
+    })();
+  </script>
+</body>
+</html>

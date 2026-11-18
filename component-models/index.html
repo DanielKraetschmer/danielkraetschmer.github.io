@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0d12" />
+  <script>
+    /* Dark is the default; light only when the visitor chose it with the header toggle. */
+    try { if (localStorage.getItem('theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f5f7'); } } catch (e) {}
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/images/logo/spdm-tech-favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/spdm-tech-favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/logo/spdm-tech-icon-180.png">
+  <link href="/assets/css/site.css" rel="stylesheet">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Coupled Component Models | SPDM Technologies</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Coupled Component Models" />
+<meta name="author" content="Dr.-Ing. Daniel M. Krätschmer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Components as building blocks. A reduced model of the chip package and one of the board, coupled at their pins, give junction, pin and board temperatures for any power profile in milliseconds." />
+<meta name="twitter:description" property="og:description" content="Components as building blocks. A reduced model of the chip package and one of the board, coupled at their pins, give junction, pin and board temperatures for any power profile in milliseconds." />
+<link rel="canonical" href="https://www.spdm-tech.de/component-models/" />
+<meta property="og:url" content="https://www.spdm-tech.de/component-models/" />
+<meta property="og:site_name" content="SPDM Technologies" />
+<meta property="og:image" content="https://www.spdm-tech.de/images/coupled/coupled-promo-poster.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://www.spdm-tech.de/images/coupled/coupled-promo-poster.jpg" />
+<meta name="twitter:title" content="Coupled Component Models" />
+<meta name="twitter:site" content="@krae_dan" />
+<meta name="twitter:creator" content="@krae_dan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Dr.-Ing. Daniel M. Krätschmer"},"description":"Components as building blocks. A reduced model of the chip package and one of the board, coupled at their pins, give junction, pin and board temperatures for any power profile in milliseconds.","headline":"Coupled Component Models","image":"https://www.spdm-tech.de/images/coupled/coupled-promo-poster.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://www.spdm-tech.de/images/logo/spdm-tech-icon-180.png"},"name":"Dr.-Ing. Daniel M. Krätschmer"},"url":"https://www.spdm-tech.de/component-models/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand lockup" href="/" aria-label="SPDM Tech, home"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+<span class="word"><b>SPDM</b> <i>Tech</i></span></a>
+      <nav class="site-nav" aria-label="Main">
+        
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/capabilities/" aria-current="true">Capabilities</a></li>
+          
+          <li><a href="/team/">Team</a></li>
+          
+          <li><a href="/about/">About</a></li>
+          
+          <li><a href="/contact/">Contact</a></li>
+          
+          <li><a href="/impressum/">Impressum</a></li>
+          
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Light mode" title="Switch between dark and light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+
+
+
+
+
+
+
+<nav class="chapter-bar" aria-label="Chapters of Electronics thermal">
+  <div class="wrap">
+    <a class="chapter-home" href="/electronics-thermal/">Electronics thermal</a>
+    <ol>
+      <li><a href="/pcb-thermal/"><span class="mono">1</span> Board model</a></li>
+      <li><a href="/model-order-reduction/"><span class="mono">2</span> Reduced model</a></li>
+      <li><a href="/component-models/" aria-current="page"><span class="mono">3</span> Coupled components</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Chapter 3 · Coupled component models</p>
+      <h1>Components as building blocks.</h1>
+      <p class="lead">A reduced model for the chip package, one for the board, coupled at their pins. Junction, pins and board for any power profile, in milliseconds, with the accuracy of the full 3D models.</p>
+      <a class="button" href="/contact/">Talk to us</a>
+    </div>
+    <figure class="board-figure cm-hero">
+      <img src="/images/coupled/cm-ports-1000.webp" srcset="/images/coupled/cm-ports-480.webp 480w, /images/coupled/cm-ports-1000.webp 1000w" sizes="(max-width: 960px) 100vw, 640px" alt="The TQFP-32 package on the circuit board, with its 32 lead ports marked" width="1000" height="840" decoding="async">
+
+      <figcaption>The microcontroller U1 on the board: 32 leads, the air gap under the body and the body surface are the 34 ports where the two models meet.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block key-figures-block">
+  <div class="wrap">
+    <ul class="credentials">
+      <li><strong>424&#8239;584 → 357</strong><span>Unknowns: package and board in full 3D, and coupled as reduced models</span></li>
+      <li><strong>105.0&nbsp;K/W</strong><span>From junction to air on this board, not on a standard test board</span></li>
+      <li><strong>68&nbsp;%</strong><span>Of the heat leaves through the 32 leads, 26&nbsp;% through the air gap</span></li>
+      <li><strong>0.054&nbsp;K</strong><span>Largest difference to the full models, anywhere in package and board, at any time</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The result · 1 W in the die, steady state</p>
+    <h2 class="title">From the die to the air, every path accounted for.</h2>
+    <div class="cm-result">
+      <figure class="cm-figure">
+        <div class="cm-frame"><img src="/images/coupled/cm-section-1300.webp" srcset="/images/coupled/cm-section-800.webp 800w, /images/coupled/cm-section-1300.webp 1300w" sizes="(max-width: 960px) 100vw, 700px" alt="Section through the package and the board with isotherms: the die is hottest, the heat spreads through the leads and the air gap into the board" width="1300" height="720" decoding="async">
+</div>
+        <figcaption>Section through a lead row: die, mould, lead feet, the 0.1&nbsp;mm air gap and the board, with isotherms every 5&nbsp;K.</figcaption>
+      </figure>
+      <div>
+        <dl class="mor-times cm-steady">
+          <dt>Junction</dt><dd class="mono is-hot">+105.0 K</dd>
+          <dt>Pins</dt><dd class="mono">+34.4 … +53.9 K</dd>
+          <dt>Board under U1</dt><dd class="mono is-data">+48.6 K</dd>
+        </dl>
+        <p class="label cm-paths-label">Where the watt goes</p>
+        <ul class="cm-paths">
+          <li style="--share:683"><span>Leads → board → air</span><b class="mono">683 mW</b></li>
+          <li style="--share:263" class="is-gap"><span>Air gap → board → air</span><b class="mono">263 mW</b></li>
+          <li style="--share:55" class="is-body"><span>Body surface → air</span><b class="mono">55 mW</b></li>
+        </ul>
+        <p class="meaning small">Temperatures are rises above ambient air. The pins differ by almost 20&nbsp;K: the board, not the package, decides which pins run hot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="try-it">
+  <div class="wrap">
+    <p class="eyebrow">Try it</p>
+    <h2 class="title">How much power can U1 take?</h2>
+    <p class="lead mor-lead">Set the ambient temperature, your junction limit and a power profile. The coupled reduced model answers right here, in your browser.</p>
+    <div class="overlay-grid mor-try">
+      <figure class="mor-chart-figure">
+        <svg class="heat-curve mor-chart" id="cm-chart" viewBox="0 0 700 420" role="img" aria-label="Power profile and the junction and hottest-pin temperatures of U1 over 600 s, with the junction limit"></svg>
+        <p class="mor-legend"><span class="sw sw-source"></span>Junction <span class="sw cm-sw-pin"></span>Hottest pin <span class="sw cm-sw-limit"></span>Your limit <span class="sw sw-both" id="cm-ref-key"></span><span id="cm-ref-label">Full models, 424&#8239;584 unknowns</span></p>
+      </figure>
+      <div class="mor-controls">
+        <label class="range"><span>Ambient air: <b class="mono" id="cm-ta-v"></b></span><input type="range" id="cm-ta" min="0" max="85" step="5" value="25"></label>
+        <label class="range"><span>Junction limit: <b class="mono" id="cm-lim-v"></b></span><input type="range" id="cm-lim" min="85" max="150" step="5" value="125"></label>
+        <label class="range"><span>Power while on: <b class="mono" id="cm-p-v"></b></span><input type="range" id="cm-p" min="0.1" max="1.5" step="0.05" value="1.0"></label>
+        <label class="range"><span>On for: <b class="mono" id="cm-on-v"></b></span><input type="range" id="cm-on" min="5" max="120" step="5" value="30.0"></label>
+        <label class="range"><span>Then off for: <b class="mono" id="cm-off-v"></b></span><input type="range" id="cm-off" min="0" max="120" step="5" value="30.0"></label>
+        <div class="presets"><button class="tab" type="button" id="cm-reset" aria-pressed="true">Checked case: 1 W, 30 s on, 30 s off</button></div>
+        <dl class="heat-values mono mor-values">
+          <dt>Junction, peak</dt><dd id="cm-peak"></dd>
+          <dt>Margin</dt><dd id="cm-margin"></dd>
+          <dt>Allowed power</dt><dd id="cm-allowed"></dd>
+          <dt>Computed in</dt><dd id="cm-ms"></dd>
+        </dl>
+        <p class="meaning small" id="cm-check"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2 class="title">Four steps, each one a script you can rerun.</h2>
+    <ol class="steps">
+      <li>
+        <img src="/images/coupled/cm-package-940.webp" srcset="/images/coupled/cm-package-480.webp 480w, /images/coupled/cm-package-940.webp 940w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="940" height="700" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">1 · Component</p>
+        <h3>The package in 3D</h3>
+        <p>Die, die attach, copper die pad, 32 gull-wing leads and mould: 89&#8239;695 unknowns, calibrated to θ<sub>JC</sub> = 20&nbsp;K/W.</p>
+      </li>
+      <li>
+        <img src="/images/coupled/cm-ports-1000.webp" srcset="/images/coupled/cm-ports-480.webp 480w, /images/coupled/cm-ports-1000.webp 1000w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1000" height="840" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">2 · Ports</p>
+        <h3>34 thermal ports</h3>
+        <p>Each lead foot on its pad, the air gap under the body and the body surface: where package and board exchange heat.</p>
+      </li>
+      <li>
+        <img src="/images/coupled/cm-assembly-1600.webp" srcset="/images/coupled/cm-assembly-800.webp 800w, /images/coupled/cm-assembly-1600.webp 1600w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1740" height="790" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">3 · Reduce and couple</p>
+        <h3>176 + 214 → 357</h3>
+        <p>Each part reduced on its own, its port temperatures kept. Added at the ports: no iteration, no co-simulation.</p>
+      </li>
+      <li>
+        <img src="/images/coupled/cm-validation-1440.webp" srcset="/images/coupled/cm-validation-800.webp 800w, /images/coupled/cm-validation-1440.webp 1440w" sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 300px" alt="" width="1920" height="1080" class="contain" loading="lazy" decoding="async">
+
+        <p class="label">4 · Check</p>
+        <h3>Against the full models</h3>
+        <p>Package and board in full 3D, coupled exactly: steady state, heat-up and pulses, node by node.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap evidence-grid">
+    <div>
+      <p class="eyebrow">The evidence</p>
+      <h2 class="title">Every number comes with its check.</h2>
+      <p class="lead">Coupling only helps if every block is right on its own and the assembly gives the same answer as the full models together.</p>
+    </div>
+    <article class="dossier">
+      <div class="dossier-head mono"><span>Decision dossier</span><span>TQFP-32 on the Nano IO Shield</span></div>
+      <ul class="evidence-list">
+        <li><span>Package model against CalculiX</span><strong class="mono">K and C identical to 3·10⁻⁸</strong></li>
+        <li><span>θ<sub>JC</sub> calibrated</span><strong class="mono">20.0 K/W → mould 0.78 W/mK</strong></li>
+        <li><span>Steady state, coupled</span><strong class="mono">10⁻⁸ K against the full models</strong></li>
+        <li><span>Heat-up and pulses</span><strong class="mono">≤ 0.054 K whole field, junction ≤ 0.002 K</strong></li>
+        <li><span>Coupled system</span><strong class="mono">357 unknowns, positive definite</strong></li>
+        <li><span>655 time steps, heat-up and pulses</span><strong class="mono">full models 116 s, reduced 128 ms</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Beyond this board</p>
+    <h2 class="title">Build once, reuse on every board.</h2>
+    <div class="two three">
+      <article class="field is-pcb">
+        <p class="eyebrow">A library of components</p>
+        <h3>One reduced model per package.</h3>
+        <p class="field-text">Built and checked once, then placed on any board: the coupling happens at the ports, in milliseconds.</p>
+        <ul class="trail">
+          <li>Shown here: TQFP-32 on the Nano IO Shield</li>
+          <li>Every pin, not a two-resistor network</li>
+          <li>Swap a component without remeshing the board</li>
+        </ul>
+      </article>
+      <article class="field is-data">
+        <p class="eyebrow">Whole assemblies</p>
+        <h3>More blocks, the same principle.</h3>
+        <p class="field-text">Further components, heat sinks, the housing: each one a block with its ports, the assembly stays small and exact.</p>
+        <ul class="trail">
+          <li>Several chips on one board</li>
+          <li>Board in its housing</li>
+          <li>Derating for the real mission profile</li>
+        </ul>
+      </article>
+      <article class="field is-eng">
+        <p class="eyebrow">Shared without the drawings</p>
+        <h3>A model that does not reveal the design.</h3>
+        <p class="field-text">A reduced model passes on the thermal behaviour, not the geometry inside: a way for suppliers and customers to work with the same numbers.</p>
+        <ul class="trail">
+          <li>Component makers to board designers</li>
+          <li>Board makers to system integrators</li>
+          <li>Into system simulation and digital twins</li>
+        </ul>
+      </article>
+    </div>
+    <p class="note">Shown with results on this page: one package coupled to one board. Several components, heat sinks and housings follow the same steps and are not shown here yet.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">The whole story</p>
+    <h2 class="title">Components as building blocks, in 75 seconds.</h2>
+    <video class="promo-video" controls preload="none" playsinline poster="/images/coupled/coupled-promo-poster.jpg" width="1280" height="720">
+      <source src="/images/coupled/coupled-promo-720.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="note assumptions">Assumptions: TQFP-32 7x7x1.0 mm, 0.8 mm pitch (assumed ATmega328P-AU) with typical materials; the mould conductivity is calibrated so that θ<sub>JC</sub> = 20&nbsp;K/W. Leads ideally soldered to their pads, a 0.1&nbsp;mm air gap under the body, convection h = 12&nbsp;W/m²K on the body surface; the board as on the <a href="/pcb-thermal/">PCB thermal page</a>. The model is linear: temperature rises scale with power and are added to the ambient temperature, so the calculator's absolute temperatures assume constant material values and convection. 1&nbsp;W is a reference load, well above what this microcontroller dissipates in normal use. The calculator uses 1&nbsp;s time steps like the reference runs. Times measured on the same machine; the full models coupled exactly through their port heat flows.</p>
+  </div>
+</section>
+
+<section class="block chapter-next">
+  <div class="wrap">
+    <a class="chapter-card" href="/electronics-thermal/">
+      <span class="label">All three chapters</span>
+      <strong>Electronics thermal: from Gerber files to a live thermal model.</strong>
+      <span class="chapter-text">Board model, reduced model and coupled components on one page, with what comes next.</span>
+    </a>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-copy">
+      <p class="eyebrow cta-eyebrow">Pilot partners wanted</p>
+      <h2>Have a component that runs hot? Let's put a number on it.</h2>
+      <p class="cta-text">SPDM Tech is in its build-up phase. As one of the first pilot partners, you bring one real question, from a circuit board, a drawing or a simulation process, and get a checked answer.</p>
+    </div>
+    <a class="button" href="/contact/">Become a pilot partner</a>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  var C = {"package":"TQFP-32 7x7x1.0 mm, 0.8 mm pitch (assumed ATmega328P-AU)","unknowns":{"package":89695,"board":334889,"reduced":357,"packageBasis":176,"boardBasis":214},"ports":34,"thetaJA":105.0,"thetaJC":20.0,"mouldK":0.78,"steady":{"junction":105.0,"pinMin":34.4,"pinMax":53.9,"under":48.6},"paths":{"leads":683,"air gap":263,"body surface":55},"errors":{"steady":1.059041210282885e-08,"transient":0.054,"junction":0.002},"seconds":{"full":116,"reducedMs":128,"steps":655},"pulse":{"power":1.0,"on":30.0,"period":60.0,"t":[1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0,71.0,72.0,73.0,74.0,75.0,76.0,77.0,78.0,79.0,80.0,81.0,82.0,83.0,84.0,85.0,86.0,87.0,88.0,89.0,90.0,91.0,92.0,93.0,94.0,95.0,96.0,97.0,98.0,99.0,100.0,101.0,102.0,103.0,104.0,105.0,106.0,107.0,108.0,109.0,110.0,111.0,112.0,113.0,114.0,115.0,116.0,117.0,118.0,119.0,120.0,121.0,122.0,123.0,124.0,125.0,126.0,127.0,128.0,129.0,130.0,131.0,132.0,133.0,134.0,135.0,136.0,137.0,138.0,139.0,140.0,141.0,142.0,143.0,144.0,145.0,146.0,147.0,148.0,149.0,150.0,151.0,152.0,153.0,154.0,155.0,156.0,157.0,158.0,159.0,160.0,161.0,162.0,163.0,164.0,165.0,166.0,167.0,168.0,169.0,170.0,171.0,172.0,173.0,174.0,175.0,176.0,177.0,178.0,179.0,180.0,181.0,182.0,183.0,184.0,185.0,186.0,187.0,188.0,189.0,190.0,191.0,192.0,193.0,194.0,195.0,196.0,197.0,198.0,199.0,200.0,201.0,202.0,203.0,204.0,205.0,206.0,207.0,208.0,209.0,210.0,211.0,212.0,213.0,214.0,215.0,216.0,217.0,218.0,219.0,220.0,221.0,222.0,223.0,224.0,225.0,226.0,227.0,228.0,229.0,230.0,231.0,232.0,233.0,234.0,235.0,236.0,237.0,238.0,239.0,240.0,241.0,242.0,243.0,244.0,245.0,246.0,247.0,248.0,249.0,250.0,251.0,252.0,253.0,254.0,255.0,256.0,257.0,258.0,259.0,260.0,261.0,262.0,263.0,264.0,265.0,266.0,267.0,268.0,269.0,270.0,271.0,272.0,273.0,274.0,275.0,276.0,277.0,278.0,279.0,280.0,281.0,282.0,283.0,284.0,285.0,286.0,287.0,288.0,289.0,290.0,291.0,292.0,293.0,294.0,295.0,296.0,297.0,298.0,299.0,300.0,301.0,302.0,303.0,304.0,305.0,306.0,307.0,308.0,309.0,310.0,311.0,312.0,313.0,314.0,315.0,316.0,317.0,318.0,319.0,320.0,321.0,322.0,323.0,324.0,325.0,326.0,327.0,328.0,329.0,330.0,331.0,332.0,333.0,334.0,335.0,336.0,337.0,338.0,339.0,340.0,341.0,342.0,343.0,344.0,345.0,346.0,347.0,348.0,349.0,350.0,351.0,352.0,353.0,354.0,355.0,356.0,357.0,358.0,359.0,360.0,361.0,362.0,363.0,364.0,365.0,366.0,367.0,368.0,369.0,370.0,371.0,372.0,373.0,374.0,375.0,376.0,377.0,378.0,379.0,380.0,381.0,382.0,383.0,384.0,385.0,386.0,387.0,388.0,389.0,390.0,391.0,392.0,393.0,394.0,395.0,396.0,397.0,398.0,399.0,400.0,401.0,402.0,403.0,404.0,405.0,406.0,407.0,408.0,409.0,410.0,411.0,412.0,413.0,414.0,415.0,416.0,417.0,418.0,419.0,420.0,421.0,422.0,423.0,424.0,425.0,426.0,427.0,428.0,429.0,430.0,431.0,432.0,433.0,434.0,435.0,436.0,437.0,438.0,439.0,440.0,441.0,442.0,443.0,444.0,445.0,446.0,447.0,448.0,449.0,450.0,451.0,452.0,453.0,454.0,455.0,456.0,457.0,458.0,459.0,460.0,461.0,462.0,463.0,464.0,465.0,466.0,467.0,468.0,469.0,470.0,471.0,472.0,473.0,474.0,475.0,476.0,477.0,478.0,479.0,480.0,481.0,482.0,483.0,484.0,485.0,486.0,487.0,488.0,489.0,490.0,491.0,492.0,493.0,494.0,495.0,496.0,497.0,498.0,499.0,500.0,501.0,502.0,503.0,504.0,505.0,506.0,507.0,508.0,509.0,510.0,511.0,512.0,513.0,514.0,515.0,516.0,517.0,518.0,519.0,520.0,521.0,522.0,523.0,524.0,525.0,526.0,527.0,528.0,529.0,530.0,531.0,532.0,533.0,534.0,535.0,536.0,537.0,538.0,539.0,540.0,541.0,542.0,543.0,544.0,545.0,546.0,547.0,548.0,549.0,550.0,551.0,552.0,553.0,554.0,555.0,556.0,557.0,558.0,559.0,560.0,561.0,562.0,563.0,564.0,565.0,566.0,567.0,568.0,569.0,570.0,571.0,572.0,573.0,574.0,575.0,576.0,577.0,578.0,579.0,580.0,581.0,582.0,583.0,584.0,585.0,586.0,587.0,588.0,589.0,590.0,591.0,592.0,593.0,594.0,595.0,596.0,597.0,598.0,599.0,600.0],"full":[22.486,35.898,45.178,51.852,56.791,60.544,63.473,65.817,67.741,69.359,70.749,71.967,73.052,74.032,74.929,75.757,76.527,77.249,77.929,78.572,79.182,79.763,80.317,80.847,81.355,81.843,82.312,82.763,83.197,83.616,61.534,48.514,39.612,33.304,28.72,25.309,22.714,20.694,19.083,17.77,16.677,15.747,14.943,14.236,13.605,13.036,12.519,12.043,11.604,11.195,10.814,10.457,10.121,9.804,9.505,9.221,8.952,8.696,8.453,8.221,30.484,43.684,52.762,59.242,63.995,67.57,70.327,72.507,74.274,75.739,76.983,78.059,79.008,79.857,80.627,81.332,81.985,82.592,83.161,83.697,84.203,84.683,85.14,85.576,85.992,86.391,86.773,87.14,87.492,87.832,65.673,52.578,43.603,37.224,32.57,29.093,26.432,24.347,22.674,21.301,20.148,19.16,18.3,17.537,16.853,16.232,15.662,15.137,14.648,14.192,13.764,13.361,12.98,12.619,12.277,11.952,11.641,11.345,11.063,10.792,33.017,46.18,55.221,61.666,66.384,69.925,72.649,74.796,76.53,77.964,79.177,80.223,81.142,81.962,82.703,83.38,84.005,84.585,85.128,85.637,86.118,86.573,87.005,87.416,87.809,88.184,88.543,88.887,89.217,89.535,67.355,54.238,45.242,38.843,34.169,30.672,27.991,25.887,24.196,22.803,21.632,20.627,19.748,18.969,18.267,17.629,17.043,16.501,15.997,15.524,15.081,14.662,14.266,13.891,13.533,13.193,12.869,12.559,12.262,11.978,34.188,47.338,56.366,62.798,67.504,71.032,73.744,75.879,77.601,79.023,80.224,81.259,82.166,82.975,83.705,84.371,84.985,85.554,86.086,86.586,87.056,87.501,87.923,88.325,88.707,89.073,89.422,89.757,90.079,90.387,68.198,55.072,46.068,39.66,34.977,31.472,28.783,26.671,24.971,23.571,22.392,21.379,20.493,19.705,18.996,18.351,17.758,17.209,16.697,16.218,15.767,15.341,14.939,14.556,14.193,13.846,13.515,13.198,12.895,12.605,34.809,47.953,56.975,63.4,68.1,71.623,74.328,76.457,78.174,79.591,80.786,81.815,82.718,83.521,84.246,84.907,85.515,86.08,86.606,87.101,87.566,88.006,88.424,88.82,89.198,89.559,89.904,90.234,90.551,90.855,68.662,55.532,46.523,40.111,35.424,31.914,29.222,27.105,25.401,23.997,22.814,21.797,20.907,20.116,19.403,18.754,18.157,17.604,17.089,16.606,16.152,15.723,15.316,14.93,14.563,14.213,13.879,13.559,13.253,12.959,35.159,48.3,57.319,63.741,68.438,71.958,74.66,76.786,78.5,79.914,81.106,82.132,83.032,83.832,84.554,85.212,85.818,86.38,86.904,87.396,87.859,88.296,88.711,89.105,89.48,89.839,90.181,90.509,90.823,91.125,68.929,55.797,46.786,40.371,35.682,32.17,29.475,27.356,25.65,24.244,23.059,22.04,21.147,20.354,19.639,18.988,18.389,17.834,17.317,16.832,16.375,15.945,15.536,15.149,14.78,14.428,14.091,13.77,13.461,13.166,35.364,48.503,57.52,63.941,68.636,72.154,74.855,76.979,78.691,80.103,81.294,82.319,83.216,84.015,84.736,85.392,85.997,86.557,87.079,87.569,88.031,88.467,88.88,89.273,89.647,90.003,90.344,90.671,90.984,91.284,69.087,55.953,46.941,40.525,35.834,32.321,29.625,27.505,25.798,24.39,23.204,22.183,21.29,20.495,19.779,19.127,18.527,17.971,17.452,16.966,16.509,16.076,15.667,15.278,14.908,14.555,14.218,13.895,13.586,13.289,35.486,48.624,57.64,64.06,68.754,72.271,74.971,77.094,78.805,80.216,81.406,82.43,83.327,84.125,84.844,85.5,86.103,86.662,87.184,87.673,88.134,88.569,88.981,89.373,89.746,90.102,90.442,90.768,91.08,91.38,69.181,56.047,47.034,40.617,35.926,32.412,29.715,27.594,25.886,24.478,23.291,22.27,21.376,20.58,19.863,19.21,18.609,18.053,17.533,17.047,16.589,16.156,15.746,15.356,14.985,14.632,14.294,13.97,13.661,13.363,35.56,48.697,57.713,64.132,68.825,72.342,75.041,77.163,78.874,80.284,81.474,82.497,83.393,84.19,84.909,85.565,86.167,86.726,87.247,87.736,88.196,88.631,89.042,89.434,89.806,90.162,90.502,90.827,91.138,91.437,69.239,56.104,47.09,40.673,35.981,32.467,29.769,27.648,25.94,24.531,23.343,22.322,21.427,20.632,19.914,19.261,18.659,18.102,17.583,17.095,16.637,16.204,15.793,15.403,15.032,14.678,14.34,14.016,13.706,13.408,35.605,48.741,57.756,64.175,68.868,72.384,75.083,77.206,78.915,80.326,81.515,82.538,83.433,84.23,84.949,85.604,86.206,86.765,87.286,87.774,88.234,88.668,89.08,89.471,89.843,90.198,90.537,90.862,91.174,91.472,69.273,56.138,47.124,40.707,36.015,32.5,29.802,27.681,25.972,24.563,23.375,22.354,21.459,20.663,19.945,19.291,18.69,18.132,17.612,17.125,16.666,16.233,15.822,15.432,15.061,14.706,14.368,14.044,13.733,13.435]},"heat":{"t":[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0,150.0,200.0,250.0,300.0,350.0,400.0,450.0,500.0,550.0,600.0,650.0,700.0,750.0,800.0,850.0,900.0,950.0,1000.0],"full":[1.158,1.894,2.474,2.974,3.426,3.846,4.241,4.618,4.981,5.331,8.315,11.006,13.493,15.818,18.005,20.072,22.031,23.889,25.657,37.803,46.412,52.679,57.357,60.939,63.751,66.017,67.887,69.467,77.418,82.465,86.072,88.818,90.99,92.753,94.213,95.44,96.486,99.511,101.364,102.547,103.323,103.843,104.196,104.439,104.607,104.725,104.806,104.864,104.904,104.933,104.953,104.967,104.977,104.984,104.989]}};
+  var ns = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('cm-chart');
+  function el(name, attrs, text) {
+    var n = document.createElementNS(ns, name);
+    for (var a in attrs) n.setAttribute(a, attrs[a]);
+    if (text) n.textContent = text;
+    svg.appendChild(n);
+    return n;
+  }
+  var $ = function (id) { return document.getElementById(id); };
+  var ta = $('cm-ta'), lim = $('cm-lim'), pw = $('cm-p'), on = $('cm-on'), off = $('cm-off'), reset = $('cm-reset');
+  var P = C.pulse, T = P.t, X0 = 56, X1 = 684, Y0 = 376, Y1 = 92, SY0 = 60, SY1 = 14, END = T[T.length - 1];
+  function px(t) { return X0 + t / END * (X1 - X0); }
+  var ymax = 140, dyn = [];
+  function py(v) { return Y0 - v / ymax * (Y0 - Y1); }
+  var power = el('path', { class: 'power' });
+  el('text', { x: X0 - 10, y: SY0, 'text-anchor': 'end' }, 'power');
+  [0, 100, 200, 300, 400, 500, 600].forEach(function (t) { el('text', { x: px(t), y: Y0 + 24, 'text-anchor': 'middle' }, t === 600 ? '600 s' : String(t)); });
+  var modes = null;
+
+  // coupled reduced model in modal form: z <- (z / dt + pg P) / (1 / dt + lambda), implicit Euler like the reference
+  function simulate(prof) {
+    var lam = modes.lam, pg = modes.pg, H = modes.H, n = lam.length, z = new Float64Array(n);
+    var tj = [], pin = [], tPrev = 0;
+    T.forEach(function (t) {
+      var dt = t - tPrev, p = prof(t), i, r; tPrev = t;
+      for (i = 0; i < n; i++) z[i] = (z[i] / dt + pg[i] * p) / (1 / dt + lam[i]);
+      var j = 0; for (i = 0; i < n; i++) j += H[0][i] * z[i];
+      var m = -Infinity;
+      for (r = 1; r <= 32; r++) { var s = 0, h = H[r]; for (i = 0; i < n; i++) s += h[i] * z[i]; if (s > m) m = s; }
+      tj.push(j); pin.push(m);
+    });
+    return { tj: tj, pin: pin };
+  }
+  function line(ys, cls, off0) {
+    return el('polyline', { points: ys.map(function (v, i) { return px(T[i]).toFixed(1) + ',' + py(v + off0).toFixed(1); }).join(' '), class: cls });
+  }
+  function checked() { return +pw.value === P.power && +on.value === P.on && +off.value === P.period - P.on; }
+
+  function update() {
+    var Ta = +ta.value, L = +lim.value, W = +pw.value, ton = +on.value, toff = +off.value, period = ton + toff;
+    $('cm-ta-v').textContent = Ta + ' °C';
+    $('cm-lim-v').textContent = L + ' °C';
+    $('cm-p-v').textContent = W.toFixed(2) + ' W';
+    $('cm-on-v').textContent = ton + ' s';
+    $('cm-off-v').textContent = toff ? toff + ' s' : '0 s (constant power)';
+    var prof = function (t) { return toff === 0 || ((t - 1e-9) % period) < ton ? W : 0; };
+    reset.setAttribute('aria-pressed', checked() ? 'true' : 'false');
+    var d = 'M' + px(0) + ',' + SY0;
+    T.forEach(function (t, i) { var y = prof(t) ? SY0 - (SY0 - SY1) * prof(t) / 1.5 : SY0; d += ' L' + px(i ? T[i - 1] : 0).toFixed(1) + ',' + y.toFixed(1) + ' L' + px(t).toFixed(1) + ',' + y.toFixed(1); });
+    power.setAttribute('d', d + ' L' + px(END) + ',' + SY0 + ' Z');
+    if (!modes) return;
+    var t0 = performance.now(), r = simulate(prof), ms = performance.now() - t0;
+    var peak = Math.max.apply(null, r.tj), pinPeak = Math.max.apply(null, r.pin);
+    // axis: 0 °C to a round value above the limit and the peak
+    ymax = Math.max(60, Math.ceil((Math.max(L, Ta + peak) + 5) / 20) * 20);
+    dyn.forEach(function (n) { n.remove(); }); dyn = [];
+    for (var k = 0; k <= ymax; k += 20) {
+      dyn.push(el('line', { x1: X0, x2: X1, y1: py(k), y2: py(k), class: 'grid' }));
+      dyn.push(el('text', { x: X0 - 10, y: py(k) + 4, 'text-anchor': 'end' }, k + ' °C'));
+    }
+    dyn.push(el('line', { x1: X0, x2: X1, y1: py(L), y2: py(L), class: 'limit' }));
+    if (checked()) dyn.push(line(P.full, 'ref', Ta));
+    dyn.push(line(r.pin, 'pin', Ta));
+    dyn.push(line(r.tj, 'curve', Ta));
+    $('cm-ref-key').hidden = $('cm-ref-label').hidden = !checked();
+    var margin = L - (Ta + peak);
+    $('cm-peak').textContent = (Ta + peak).toFixed(1) + ' °C';
+    $('cm-margin').textContent = (margin >= 0 ? '+' : '') + margin.toFixed(1) + ' K' + (margin < 0 ? '  over the limit' : '');
+    $('cm-margin').className = margin < 0 ? 'is-over' : '';
+    // linear model: the rise scales with power, so the allowed power for this profile follows directly
+    var allowed = L > Ta ? W * (L - Ta) / peak : 0;
+    $('cm-allowed').textContent = allowed.toFixed(2) + ' W' + (toff ? ' with this timing' : ' continuous');
+    $('cm-ms').textContent = ms.toFixed(0) + ' ms, ' + T.length + ' time steps';
+    var txt = 'Hottest pin peaks at ' + (Ta + pinPeak).toFixed(1) + ' °C. ';
+    if (checked()) {
+      var dev = 0; r.tj.forEach(function (v, i) { dev = Math.max(dev, Math.abs(v - P.full[i])); });
+      txt += 'Checked case: the grey curve is the full models, coupled exactly; largest junction difference ' + dev.toFixed(3) + ' K.';
+    } else {
+      txt += 'No full-model run for this profile: the coupled model was checked on the heat-up and on 1 W pulses, and it is linear.';
+    }
+    $('cm-check').textContent = txt;
+  }
+  [ta, lim, pw, on, off].forEach(function (s) { s.addEventListener('input', update); });
+  reset.addEventListener('click', function () { pw.value = P.power; on.value = P.on; off.value = P.period - P.on; update(); });
+  update();
+  if (!window.fetch) { $('cm-check').textContent = '(your browser cannot load the model)'; return; }
+  fetch('/assets/data/coupled-modes.json').then(function (r) { return r.json(); }).then(function (m) { modes = m; update(); })
+    .catch(function () { $('cm-check').textContent = '(the model could not be loaded)'; });
+})();
+</script>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span class="foot-brand"><svg class="foot-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path class="m-s" d="M8 26 19 37 40 12" stroke-width="4.5" stroke-linejoin="round"/><circle class="m-f" cx="8" cy="26" r="5"/><circle class="m-f" cx="19" cy="37" r="5"/><circle class="a-f" cx="40" cy="12" r="7"/></svg>
+Dr.-Ing. Daniel M. Kraetschmer · SPDM Technologies</span>
+      <ul>
+        
+        <li><a href="https://github.com/DanielKraetschmer" rel="noopener">GitHub</a></li>
+        
+        <li><a href="https://x.com/krae_dan" rel="noopener">X</a></li>
+        
+        <li><a href="mailto:daniel.kraetschmer@spdm-tech.de">Email</a></li>
+        
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+      <p class="foot-status">SPDM Tech is in its build-up phase. The results shown come from our own demonstration parts and public data. <a href="/about/#where-we-are">Where we are</a></p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.querySelector('.theme-toggle'), meta = document.querySelector('meta[name="theme-color"]');
+      if (!btn) return;
+      function show() { btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false'); }
+      show();
+      btn.addEventListener('click', function () {
+        var light = root.getAttribute('data-theme') !== 'light';
+        if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+        meta.setAttribute('content', light ? '#f4f5f7' : '#0a0d12');
+        try { if (light) localStorage.setItem('theme', 'light'); else localStorage.removeItem('theme'); } catch (e) {}
+        show();
+      });
+    })();
+  </script>
+</body>
+</html>
